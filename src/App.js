@@ -1,12 +1,26 @@
-import './App.css';
 import React from 'react';
-import Header from './components/Header/Header';
+import { Switch, Route } from 'react-router-dom';
 
-function App() {
+import Header from './components/Header/Header';
+import Footer from "./components/Footer/Footer";
+import Home from './screens/Home/Home';
+
+function NotFound() {
+  return <h1>404 - Página no encontrada</h1>;
+}
+
+export default function App() {
   return (
-    <React.Fragment>
-      <Header/>
-    </React.Fragment>
+    <>
+      <Header />
+      <main>
+        <Switch>
+          <Route path="/" exact component={Home} />
+          <Route component={NotFound} />
+        </Switch>
+      </main>
+      <Footer />
+    </>
   );
 }
-export default App;
+
