@@ -1,11 +1,13 @@
 import React, { Component } from "react";
 import CardPMovies from "../CardPMovies/CardPMovies";
 
+//PADRE DE CARDPMOVIES!!!!!!
 class PMoviesFetch extends Component {
     constructor(props) {
     super(props);
     this.state = {
       movies: [],
+      nextUrl:null,
       loading: true,
       error: null,
     };
@@ -47,7 +49,7 @@ cargarMas = () => {
       }
 
       this.setState({
-        //para que usamos el concat --> nos va a ayuda a unir los dos arrays --> pagina 1 y 2 porque asi usamos el boton "cargar mas" en el futuro, y tmb no ayuda a no repetir personajes que estan en la pagina anterior y por eso no ayuda a filtrar
+        //para que usamos el concat --> nos va a ayuda a unir los dos arrays --> pagina 1 y 2 porque asi usamos el boton "cargar mas" en el futuro, y tmb nos ayuda a no repetir personajes que estan en la pagina anterior y por eso no ayuda a filtrar
         movies: this.state.movies.concat(data.results),
         nextUrl: nextUrl
       });
