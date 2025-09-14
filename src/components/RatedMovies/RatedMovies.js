@@ -1,4 +1,5 @@
 import React from 'react'
+//como mi cardMovies
 
 const RatedMovies = () => {
   return (
