@@ -3,9 +3,11 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import Header from './components/Header/Header';
 import Footer from "./components/Footer/Footer";
 import Home from './screens/Home/Home';
-import PopularMovies from './screens/Movies/PopularMovies';
-import AirMovies from './screens/Movies/AirMovies';
+import Popular from './screens/Popular/Popular';
+import Nowplaying from './screens/NowPlaying/NowPlaying';
 import DetailMovies from './components/DetailMovies/DetailMovies';
+import PopularSeries from './screens/PopularSeries/PopularSeries';
+import TopRatedrSeries from './screens/TopRatedSeries/TopRatedSeries';
 
 
 function NotFound() {
@@ -19,8 +21,10 @@ export default function App() {
       <main>
         <Switch>
           <Route path="/" exact component={Home} />
-          <Route path="/PopularMovies" exact component={PopularMovies} />
-          <Route path="/AirMovies" exact component={AirMovies} />
+          <Route path="/PopularMovies" exact component={Popular} />
+          <Route path="/NowPlayingMovies" exact component={Nowplaying} />
+          <Route path="/PopularSeries" exact component={PopularSeries} />
+          <Route path="/TopRatedSeries" exact component={TopRatedrSeries} />
           <Route path="/movie/:id" exact component={DetailMovies} />
           <Route component={NotFound} />
         </Switch>

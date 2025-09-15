@@ -38,7 +38,7 @@ class CardPMovies extends Component {
 
           <button
             className="btn alert-primary"
-            onClick={() => this.props.borrando && this.props.borrando(this.props.id)}
+            onClick={() => this.props.borrando (this.props.id)}
             style={{ marginLeft: 8 }}
           >
             🗑️
