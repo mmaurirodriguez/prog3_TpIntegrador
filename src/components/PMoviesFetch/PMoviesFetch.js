@@ -65,7 +65,7 @@ cargarMas = () => {
 //REVISAR SI LAS CLASSNAMES CORRESPONDEN CON EL INDEX.HTML!!!
     return (
       <div>
-        <h2 className="alert alert-primary">Popular movies this week</h2>
+
 
         <section className="row cards" id="movies">
           {this.state.movies.map((mv) => (
