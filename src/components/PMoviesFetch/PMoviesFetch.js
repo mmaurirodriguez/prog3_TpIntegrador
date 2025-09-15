@@ -65,8 +65,6 @@ cargarMas = () => {
 //REVISAR SI LAS CLASSNAMES CORRESPONDEN CON EL INDEX.HTML!!!
     return (
       <div>
-
-
         <section className="row cards" id="movies">
           {this.state.movies.map((mv) => (
             <CardPMovies

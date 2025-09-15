@@ -8,11 +8,19 @@ export default function Home() {
     <div className="container">
       <h2 className="section-title">Popular movies this week</h2>
       <PMoviesFetch />
-      <Link to="/popular" className="btn btn-primary mt-2">Ver más</Link>
+      <Link to="/PopularMovies" className="btn btn-primary mt-2">Ver más</Link>
 
      <h2 className="section-title">Movies Now Playing</h2>
       <AMoviesFetch />
-      <Link to="/now-playing" className="btn btn-primary mt-2">Ver más</Link>
+      <Link to="/NowPlayingMovies" className="btn btn-primary mt-2">Ver más</Link>
+
+    <h2 className="section-title">Popular series this week</h2>
+      <AMoviesFetch />
+      <Link to="/PopularSeries" className="btn btn-primary mt-2">Ver más</Link>
+
+    <h2 className="section-title">Top rated series</h2>
+      <AMoviesFetch />
+      <Link to="/TopRatedSeries" className="btn btn-primary mt-2">Ver más</Link>
     </div>
   );
 }

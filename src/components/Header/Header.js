@@ -9,8 +9,10 @@ export default function Header() {
 
       <ul className="nav-links">
         <LinkHeader to="/" text="Home" />
-        <LinkHeader to="/popular" text="Popular Movies" />
-        <LinkHeader to="/now-playing" text="Movies Now Playing" />
+        <LinkHeader to="/PopularMovies" text="Popular Movies" />
+        <LinkHeader to="/NowplayingMovies" text="Movies Now Playing" />
+        <LinkHeader to="/PopularSeries" text="Popular Series" />
+        <LinkHeader to="/TopRatedSeries" text="Top Rated Series" />
         <LinkHeader to="/favoritas" text="Favoritas" />
       </ul>
 
