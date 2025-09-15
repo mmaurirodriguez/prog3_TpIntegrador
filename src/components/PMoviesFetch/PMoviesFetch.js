@@ -19,8 +19,9 @@ class PMoviesFetch extends Component {
     )
       .then((res) => res.json())
       .then((data) => {
+        let filtradas = data.results.filter((pelis,idx) => idx < 5 )
         this.setState({
-          movies: data.results,
+          movies: filtradas,
           nextUrl: data.page + 1,
           loading: false,
         });
