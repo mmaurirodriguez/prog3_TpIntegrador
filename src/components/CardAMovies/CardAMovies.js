@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom/cjs/react-router-dom.min";
 // importo css?????
 
 class CardAMovies extends Component {
@@ -39,13 +40,11 @@ class CardAMovies extends Component {
             {this.state.textoBoton}
           </button>
 
-          <a
-            href={`/movie/${this.props.id}`}
+          <Link to= {`/movie/${this.props.id}`}
             className="btn btn-primary"
-            style={{ marginLeft: 8 }}
-          >
+            style={{ marginLeft: 8 }}>
             Ir a detalle
-          </a>
+          </Link>
 
           <button
             className="btn alert-primary"
