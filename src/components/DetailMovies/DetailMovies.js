@@ -1,7 +1,7 @@
 import React,{Component} from "react";
 
 
-class ADetailMovies extends Component{
+class DetailMovies extends Component{
     constructor(props){
     super(props);
     this.state ={
@@ -18,6 +18,9 @@ componentDidMount(){
         {datos: data.results}
       ))
       .catch(error => console.log(error));
+
+      this.generos();
+
   }
 
 generos(){
@@ -48,7 +51,7 @@ render(){
 
     return(
     <React.Fragment>
-      {this.state.datos ===''? <h3>Cargando...</h3>:
+      {this.state.datos ==='' || aMovie.length === 0 ? <h3>Cargando...</h3>:
         <div className="">
           <img src={`https://image.tmdb.org/t/p/w500${aMovie[0].poster_path}`} alt={aMovie[0].title} />
           <h4>{aMovie[0].title}</h4>
@@ -56,7 +59,7 @@ render(){
           <p>{aMovie[0].release_date}</p>
           <p>{aMovie[0].runtime}</p>
           <p>{aMovie[0].overview}</p>
-          <p>{aMovie[0].genre_ids.join(", ")}</p> 
+          <p>{aMovie[0].genre_ids.map((id,i) => this.state.generos.filter(g => g.id === id).map(g => g.name)+(i < aMovie[0].genre_ids.length - 1? ", " : ""))}</p>
           <button onClick={()=>this.agregarAFavoritos(aMovie[0])}> ⭐ Agregar a favoritos</button>
           
         </div>
@@ -66,6 +69,6 @@ render(){
   }
 }
 
-export default ADetailMovies;
+export default DetailMovies;
 
 
