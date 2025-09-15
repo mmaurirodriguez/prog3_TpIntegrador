@@ -1,10 +1,8 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-
 import Header from './components/Header/Header';
 import Footer from "./components/Footer/Footer";
 import Home from './screens/Home/Home';
-
 import PopularMovies from './screens/Movies/PopularMovies';
 import AirMovies from './screens/Movies/AirMovies';
 import ADetailMovies from './components/ADetailMovies/ADetailMovies';
