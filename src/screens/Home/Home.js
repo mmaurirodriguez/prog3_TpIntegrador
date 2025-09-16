@@ -6,10 +6,6 @@ import TopRatedSeriesFetch from "../../components/TopRatedSeriesFetch/TopRatedSe
 import { Link } from "react-router-dom";
 
 export default function Home() {
-
-  
-
-
   return (
     <div className="container">
       <h2 className="section-title">Popular movies this week</h2>

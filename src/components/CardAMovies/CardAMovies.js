@@ -53,7 +53,7 @@ class CardAMovies extends Component {
             }
             
           >
-            🗑️
+           ♥️
           </button>
         </div>
       </article>

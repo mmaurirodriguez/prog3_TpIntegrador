@@ -1,7 +1,6 @@
 import React,{Component} from "react";
 import "./DetailMovies.css";
 
-
 class DetailMovies extends Component{
     constructor(props){
     super(props);
@@ -19,9 +18,7 @@ componentDidMount(){
         {datos: data.results}
       ))
       .catch(error => console.log(error));
-
       this.generos();
-
   }
 
 generos(){
@@ -31,7 +28,6 @@ generos(){
     .catch(error => console.log(error));
 }
 
-
 agregarAFavoritos(pelicula){
   this.setState({
     favoritos: this.state.favoritos.concat(pelicula)
@@ -39,17 +35,13 @@ agregarAFavoritos(pelicula){
 }
 
 render(){
-
     const id = Number(this.props.match.params.id);
-
     let aMovie = []
-
-    if(this.state.datos != ''){
+    if(this.state.datos !== ''){
     aMovie = this.state.datos.filter(peliculas => peliculas.id === id)
     }  
 
-    if(!aMovie) return <div>Personaje no encontrado...</div>
-
+    if(!aMovie) return <div>Pelicula no encontrado...</div>
     return(
     <React.Fragment>
       {this.state.datos ==='' || aMovie.length === 0 ? <h3>Cargando...</h3>:

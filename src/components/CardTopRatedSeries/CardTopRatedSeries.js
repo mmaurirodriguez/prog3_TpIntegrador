@@ -43,7 +43,7 @@ class CardTopRatedSeries extends Component {
             className="btn alert-primary"
             onClick={() => this.props.borrando(this.props.id)}
           >
-            🗑️
+            ♥️
           </button>
         </div>
       </article>
