@@ -46,7 +46,7 @@ render(){
     <React.Fragment>
       {this.state.datos ==='' || aMovie.length === 0 ? <h3>Cargando...</h3>:
         <div className="detailCard">
-          <img src={`https://image.tmdb.org/t/p/w500${aMovie[0].poster_path}`} alt={aMovie[0].title} />
+          <img src={`https://image.tmdb.org/t/p/w500${aMovie[0].backdrop_path}`} alt={aMovie[0].title} />
               <h4>{aMovie[0].title}</h4>
               <p>{aMovie[0].vote_average}</p>
               <p>{aMovie[0].release_date}</p>
