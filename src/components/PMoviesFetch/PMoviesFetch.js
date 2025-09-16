@@ -19,7 +19,7 @@ class PMoviesFetch extends Component {
     )
       .then((res) => res.json())
       .then((data) => {
-        let filtradas = data.results.filter((pelis,idx) => idx < 5 )
+        let filtradas = data.results.filter((pelis,idx) => idx < 4 ) //fijarse para las otras paginas
         this.setState({
           movies: filtradas,
           nextUrl: data.page + 1,
@@ -43,7 +43,7 @@ class PMoviesFetch extends Component {
       .catch((error) => console.log(error));
   }
 
-  borrar = (id) => {
+  borrar(id){
     const arrayNuevo = this.state.movies.filter((m) => m.id !== id);
     this.setState({
       movies: arrayNuevo,
@@ -68,13 +68,14 @@ class PMoviesFetch extends Component {
           ))}
         </section>
 
-        {this.state.nextUrl ? (
-          <button onClick={() => this.cargarMas()}>
-            Más películas
-          </button>
-        ) : (
-          <p>No hay más películas para mostrar.</p>
-        )}
+       {this.state.movies.length > 4 
+  ? (this.state.nextUrl 
+      ? <button onClick={() => this.cargarMas()}>Más películas</button> 
+      : <p>No hay más películas para mostrar.</p>
+    )
+  : null
+}
+
       </div>
     );
   }
