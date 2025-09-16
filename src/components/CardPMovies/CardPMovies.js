@@ -32,7 +32,7 @@ class CardPMovies extends Component {
             {this.state.textoBoton}
           </button>
 
-          <Link to={`/movie/${this.props.id}`} className="btn btn-primary">
+          <Link to={`/moviePopular/${this.props.id}`} className="btn btn-primary">
             Ir a detalle
           </Link>
 
