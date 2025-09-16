@@ -7,7 +7,7 @@ export default function Nowplaying() {
 
   return (
     <div className="container">
-      <h2 className="alert alert-primary mt-4">Movies now playing</h2>
+      <h2 className="section-title">Movies now playing</h2>
       <section className="row cards" id="now-playing">
      <AMoviesFetch/>
       </section>

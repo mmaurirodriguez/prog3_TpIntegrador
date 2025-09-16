@@ -5,7 +5,7 @@ import PopularSeriesFetch from "../../components/PopularSeriesFetch/PopularSerie
 export default function Popular() {
   return (
     <div className="container">
-      <h2 className="alert alert-primary">Popular series this week</h2>
+      <h2 className="section-title">Popular series this week</h2>
       <section className="row cards" id="movies">
         <PopularSeriesFetch/>
         
