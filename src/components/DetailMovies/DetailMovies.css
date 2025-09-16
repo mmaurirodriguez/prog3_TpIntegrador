@@ -1,0 +1,48 @@
+.detailCard {
+  width: 65%;               /* Hice mas ancha la card */
+  max-width: 900px;
+  min-height: 300px;        /* La acorte un poco */
+  margin: 40px auto;        /* Centre la card */
+  padding: 25px;
+  background-color:#556c83;     /* Mismo color */
+  border: 1px solid #3b5368;
+  border-radius: 12px;      
+  box-shadow: 0 6px 18px rgba(0, 0, 0, .35); 
+  text-align: center;
+}
+
+.detailCard img {
+  width: 60%;               /* hice que la img se adapte al ancho mejor */
+  height: auto;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.detailCard h4 {
+    margin:0 0 8px;
+    font-size:1rem;
+    font-weight:700;
+    color:#ede7df;
+}
+
+.detailCard p {
+  color:#e5edf6;
+  font-size:.92rem;
+  line-height:1.35;
+  margin:0 0 10px;              
+}
+
+.detailCard button {
+  margin-top: 18px;
+  padding: 10px 22px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 8px;
+  background-color: #ffcc00;  /* color para el boton */
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.detailCard button:hover {
+  background-color: #e6b800;  
+}

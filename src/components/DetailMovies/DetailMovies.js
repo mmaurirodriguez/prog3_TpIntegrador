@@ -1,4 +1,5 @@
 import React,{Component} from "react";
+import "./DetailMovies.css";
 
 
 class DetailMovies extends Component{
@@ -52,16 +53,15 @@ render(){
     return(
     <React.Fragment>
       {this.state.datos ==='' || aMovie.length === 0 ? <h3>Cargando...</h3>:
-        <div className="">
+        <div className="detailCard">
           <img src={`https://image.tmdb.org/t/p/w500${aMovie[0].poster_path}`} alt={aMovie[0].title} />
-          <h4>{aMovie[0].title}</h4>
-          <p>{aMovie[0].vote_average}</p>
-          <p>{aMovie[0].release_date}</p>
-          <p>{aMovie[0].runtime}</p>
-          <p>{aMovie[0].overview}</p>
-          <p>{aMovie[0].genre_ids.map((id,i) => this.state.generos.filter(g => g.id === id).map(g => g.name)+(i < aMovie[0].genre_ids.length - 1? ", " : ""))}</p>
-          <button onClick={()=>this.agregarAFavoritos(aMovie[0])}> ⭐ Agregar a favoritos</button>
-          
+              <h4>{aMovie[0].title}</h4>
+              <p>{aMovie[0].vote_average}</p>
+              <p>{aMovie[0].release_date}</p>
+              <p>{aMovie[0].runtime}</p>
+              <p>{aMovie[0].overview}</p>
+              <p>{aMovie[0].genre_ids.map((id,i) => this.state.generos.filter(g => g.id === id).map(g => g.name)+(i < aMovie[0].genre_ids.length - 1? ", " : ""))}</p>
+              <button onClick={()=>this.agregarAFavoritos(aMovie[0])} className="btn btn-primary"> ⭐ Agregar a favoritos</button>   
         </div>
   }
     </React.Fragment>

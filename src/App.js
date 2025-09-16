@@ -8,6 +8,7 @@ import Nowplaying from './screens/NowPlaying/NowPlaying';
 import DetailMovies from './components/DetailMovies/DetailMovies';
 import PopularSeries from './screens/PopularSeries/PopularSeries';
 import TopRatedrSeries from './screens/TopRatedSeries/TopRatedSeries';
+import DetailMoviesScreen from './screens/DetailMoviesScreen/DetailMoviesScreen';
 
 
 function NotFound() {
@@ -25,7 +26,7 @@ export default function App() {
           <Route path="/NowPlayingMovies" exact component={Nowplaying} />
           <Route path="/PopularSeries" exact component={PopularSeries} />
           <Route path="/TopRatedSeries" exact component={TopRatedrSeries} />
-          <Route path="/movie/:id" exact component={DetailMovies} />
+          <Route path="/movie/:id" exact component={DetailMoviesScreen} />
           <Route component={NotFound} />
         </Switch>
       </main>
