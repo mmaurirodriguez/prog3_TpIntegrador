@@ -1,95 +1,73 @@
 import React, { Component } from "react";
-import CardPopularSeries from "../CardPopularSeries/CardPopularSeries";
-
-const API = "https://api.themoviedb.org/3";
-const KEY = "2e31cba5082e57ddf6d0739f9c58a8d7";
+import CardPopularSeries from "../CardPopularSeries/CardPopularSeries"
 
 class PopularSeriesFetch extends Component {
-  state = {
-    movies: [],
-    nextPage: 1,
-    totalPages: null,
-    loading: true,
-    error: null,
-  };
-
-  componentDidMount() {
-    this.fetchPage(1, true);
+  constructor(props) {
+    super(props);
+    this.state = {
+      movies: [],
+      nextUrl: 1,
+      loading: true,
+      error: null,
+    };
   }
 
-  fetchPage = (page, initial = false) => {
-    this.setState({ loading: initial ? true : false, error: null });
-
-    fetch(`${API}/tv/popular?api_key=${KEY}&page=${page}`)
-      .then((res) => {
-        if (!res.ok) throw new Error(`HTTP ${res.status}`);
-        return res.json();
-      })
+  componentDidMount() {
+    fetch("https://api.themoviedb.org/3/tv/popular?api_key=2e31cba5082e57ddf6d0739f9c58a8d7")
+      .then((res) => res.json())
       .then((data) => {
-        const items = initial ? data.results.slice(0, 5) : data.results;
-        this.setState((prev) => ({
-          movies: initial ? items : prev.movies.concat(items),
-          nextPage: data.page + 1,
-          totalPages: data.total_pages,
+        let filtradas = data.results.filter((pelis, idx) => idx < 5);
+        this.setState({
+          movies: filtradas,
+          nextUrl: data.page + 1,
           loading: false,
-        }));
+        });
       })
-      .catch((error) =>
-        this.setState({ error: error.message, loading: false })
-      );
-  };
+      .catch((error) => {
+        console.log(error);
+        this.setState({ loading: false, error: String(error) });
+      });
+  }
 
-  cargarMas = () => {
-    const { nextPage, totalPages } = this.state;
-    if (totalPages ? nextPage > totalPages : false) return;
-    this.fetchPage(nextPage);
-  };
+  cargarMas() {
+    fetch(`https://api.themoviedb.org/3/tv/popular?api_key=2e31cba5082e57ddf6d0739f9c58a8d7&page=${this.state.nextUrl}`)
+      .then((res) => res.json())
+      .then((data) => {
+        this.setState({
+          movies: this.state.movies.concat(data.results),
+          nextUrl: data.page + 1,
+        });
+      })
+      .catch((error) => console.log(error));
+  }
 
   borrar = (id) => {
-    this.setState((prev) => ({
-      movies: prev.movies.filter((m) => m.id !== id),
-    }));
+    const arrayNuevo = this.state.movies.filter((m) => m.id !== id);
+    this.setState({ movies: arrayNuevo });
   };
 
   render() {
-    const { movies, loading, error, nextPage, totalPages } = this.state;
+    if (this.state.loading) return <h3>Cargando series...</h3>;
 
     return (
       <div>
-        {loading ? (
-          <h3>Cargando series...</h3>
-        ) : error ? (
-          <p>Ups, hubo un error: {error}</p>
-        ) : (
-          <>
-            <section className="row cards" id="movies">
-              {movies.length > 0 ? (
-                movies.map((mv) => (
-                  <CardPopularSeries
-                    key={mv.id}
-                    id={mv.id}
-                    title={mv.name}
-                    poster={mv.poster_path? `https://image.tmdb.org/t/p/w500${mv.poster_path}`: ""
-                    }
-                    overview={mv.overview}
-                    borrando={() => this.borrar(mv.id)}
-                  />
-                ))
-              ) : (
-                <p>No hay series para mostrar.</p>
-              )}
-            </section>
+        <section className="row cards" id="movies">
+          {this.state.movies.map((mv) => (
+            <CardPopularSeries
+              key={mv.id}
+              id={mv.id}
+              title={mv.name}
+              poster={mv.poster_path ? `https://image.tmdb.org/t/p/w500${mv.poster_path}` : null}
+              overview={mv.overview}
+              borrando={() => this.borrar(mv.id)}
+            />
+          ))}
+        </section>
 
-            {totalPages ? (
-              nextPage <= totalPages ? (
-                <button onClick={this.cargarMas}>Más series</button>
-              ) : (
-                <p>No hay más series para mostrar.</p>
-              )
-            ) : (
-              <p>No hay información de paginación.</p>
-            )}
-          </>
+        {this.state.nextUrl ? (
+          <button onClick={() => this.cargarMas()}>Más series</button>
+        ) : (
+          <p>No hay más series para mostrar.</p>
         )}
       </div>
     );
