@@ -32,14 +32,13 @@ class CardPMovies extends Component {
             {this.state.textoBoton}
           </button>
 
-          <Link to={`/movie/${this.props.id}`} className="btn btn-primary" style={{ marginLeft: 8 }}>
+          <Link to={`/movie/${this.props.id}`} className="btn btn-primary">
             Ir a detalle
           </Link>
 
           <button
             className="btn alert-primary"
             onClick={() => this.props.borrando (this.props.id)}
-            style={{ marginLeft: 8 }}
           >
             🗑️
           </button>

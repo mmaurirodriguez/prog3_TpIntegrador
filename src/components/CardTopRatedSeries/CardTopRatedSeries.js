@@ -20,7 +20,12 @@ class CardTopRatedSeries extends Component {
   render() {
     return (
       <article className="single-card-movie">
-        <img src={this.props.poster} alt={this.props.title} className="card-img-top" />
+        <img className="card-img-top"
+          src={this.props.poster ? this.props.poster : "https://via.placeholder.com/500x750?text=Sin+imagen"}
+          alt={this.props.title}
+        />
+
+
         <div className="cardBody">
           <h5 className="card-title">{this.props.title}</h5>
 

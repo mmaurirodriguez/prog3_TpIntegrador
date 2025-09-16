@@ -1,6 +1,8 @@
 import React from "react";
 import PMoviesFetch from "../../components/PMoviesFetch/PMoviesFetch";
 import AMoviesFetch from "../../components/AMoviesFetch/AMoviesFetch";
+import PopularSeriesFetch from "../../components/PopularSeriesFetch/PopularSeriesFetch";
+import TopRatedSeriesFetch from "../../components/TopRatedSeriesFetch/TopRatedSeriesFetch";
 import { Link } from "react-router-dom";
 
 export default function Home() {
@@ -19,11 +21,11 @@ export default function Home() {
       <Link to="/NowPlayingMovies" className="btn btn-primary mt-2">Ver más</Link>
 
     <h2 className="section-title">Popular series this week</h2>
-      <AMoviesFetch />
+      <PopularSeriesFetch />
       <Link to="/PopularSeries" className="btn btn-primary mt-2">Ver más</Link>
 
     <h2 className="section-title">Top rated series</h2>
-      <AMoviesFetch />
+      <TopRatedSeriesFetch />
       <Link to="/TopRatedSeries" className="btn btn-primary mt-2">Ver más</Link>
     </div>
   );
