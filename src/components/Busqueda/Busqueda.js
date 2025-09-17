@@ -2,7 +2,7 @@ import React,{Component} from "react";
 import { withRouter } from "react-router-dom";
 import { Link } from "react-router-dom/cjs/react-router-dom";
 
-class Search extends Component{
+class Busqueda extends Component{
     constructor(props){
         super(props)
         this.state = {
@@ -113,4 +113,4 @@ class Search extends Component{
 
 }
 
-export default withRouter(Search);
+export default withRouter(Busqueda);
