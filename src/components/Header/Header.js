@@ -1,8 +1,10 @@
-import React from "react";
+import React,{Component} from "react";
 import "./Header.css";
 import LinkHeader from "../LinkHeader/LinkHeader";
+import Busqueda from "../Busqueda/Busqueda";
 
-export default function Header() {
+export default class Header extends Component{
+  render(){
   return (
     <nav className="header navbar">
       <div className="logo">Rincon del Cine</div>
@@ -17,11 +19,10 @@ export default function Header() {
       </ul>
 
       <div className="search-bar">
-        <input type="text" placeholder="Buscar..." />
-        <button className="search-btn">Buscar</button>
+        <Busqueda/>
       </div>
     </nav>
 
   );
-}
+  }}
 
