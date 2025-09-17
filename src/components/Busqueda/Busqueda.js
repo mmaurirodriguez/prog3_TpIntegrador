@@ -36,9 +36,45 @@ class Busqueda extends Component{
         return !query? null : 
         fetch(`https://api.themoviedb.org/3/search/${this.state.tipo}?api_key=fda0b1f448b62d0af82df1475fcde076&language=es-ES&query=${query}&page=1`)
         .then(res => res.json())
-        .then(data => this.setState({ resultados: data.results? data.results : [] }))
-        .catch(err => console.log(err));
+        .then((data) => {
+          let resultados = data.results ? data.results : [];
+          let queryLower = query.toLowerCase();
+
+          // 🔹 1. Coincidencia exacta
+          let exactos = resultados.filter(
+            (item) =>
+              (item.title && item.title.toLowerCase() === queryLower) ||
+              (item.name && item.name.toLowerCase() === queryLower)
+          );
+
+          if (exactos.length > 0) {
+            this.setState({ resultados: exactos });
+          } else {
+            // 🔹 2. Coincidencias parciales por palabras
+            let palabrasQuery = queryLower.split(" ");
+
+            let coincidencias = resultados.filter((item) => {
+              let titulo = (item.title || item.name || "").toLowerCase();
+              let palabrasTitulo = titulo.split(" ");
+
+              // usamos map para chequear cada palabra del query contra las del título
+              let coincidencia = palabrasQuery.filter((palabraQuery) => {
+                // devolvemos las palabras del título que sean exactamente iguales a palabraQuery
+                let iguales = palabrasTitulo.filter(
+                  (palabraTitulo) => palabraTitulo === palabraQuery
+                );
+                return iguales.length > 0; // si encontró coincidencia
+              });
+
+              return coincidencia.length > 0; // si alguna palabra del query está en el título
+            });
+
+            this.setState({ resultados: coincidencias });
+          }
+        })
+        .catch((err) => console.log(err));
     }
+
 
     toggleVerMas = () => {
     this.setState((prev) => ({
@@ -80,7 +116,7 @@ class Busqueda extends Component{
                 <h5 className="card-title">{item.title || item.name}</h5>
 
                 {this.state.verMas && (
-                    <p className="card-text">{this.props.overview}</p>
+                    <p className="card-text">{item.overview}</p>
                 )}
 
                 <button onClick={this.toggleVerMas} className="btn alert-primary">

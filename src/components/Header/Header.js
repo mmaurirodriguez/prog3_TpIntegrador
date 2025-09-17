@@ -6,6 +6,7 @@ import Busqueda from "../Busqueda/Busqueda";
 export default class Header extends Component{
   render(){
   return (
+    <React.Fragment>
     <nav className="header navbar">
       <div className="logo">Rincon del Cine</div>
 
@@ -18,10 +19,11 @@ export default class Header extends Component{
         <LinkHeader to="/favoritas" text="Favoritas" />
       </ul>
 
+    </nav>
       <div className="search-bar">
         <Busqueda/>
       </div>
-    </nav>
+     </React.Fragment> 
 
   );
   }}
