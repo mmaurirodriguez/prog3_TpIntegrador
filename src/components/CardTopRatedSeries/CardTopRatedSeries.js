@@ -35,7 +35,7 @@ class CardTopRatedSeries extends Component {
             {this.state.textoBoton}
           </button>
 
-          <Link to={`/movie/${this.props.id}`} className="btn btn-primary" style={{ marginLeft: 8 }}>
+          <Link to={`/serieTop/${this.props.id}`} className="btn btn-primary" style={{ marginLeft: 8 }}>
             Ir a detalle
           </Link>
 
