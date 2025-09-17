@@ -1,6 +1,7 @@
 import React,{Component} from "react";
 import { withRouter } from "react-router-dom";
 import { Link } from "react-router-dom/cjs/react-router-dom";
+import Header from "../Header/Header";
 
 class Busqueda extends Component{
     constructor(props){
@@ -89,18 +90,16 @@ class Busqueda extends Component{
     render(){
         return(
             <React.Fragment>
-            <form onSubmit={(e)=>this.handleSubmit(e)}>
-                <input
-                type="text"
-                placeholder= {`Buscar ${this.state.tipo === 'movie'? 'peliculas' : 'series'}...`}
-                value={this.state.query}
-                onChange={(e)=>this.handleChange(e)}/>
 
-                <button type="submit">Buscar</button>
-            </form>
+        <Header
+          query={this.state.query}
+          tipo={this.state.tipo}
+          handleChange={(e)=>this.handleChange(e)}
+          handleTipo={(e)=>this.handleTipo(e)}
+          handleSubmit={(e)=>this.handleSubmit(e)}
+        />
 
-                <button type= "button" onClick={e => this.setState({tipo: 'movie'})}>Buscar Películas</button>
-                <button type= "button" onClick={e => this.setState({tipo: 'tv'})}>Buscar Series</button>
+
             <section className="row cards">
            {this.state.resultados.length === 0 ? (
           <p>No hay resultados</p>

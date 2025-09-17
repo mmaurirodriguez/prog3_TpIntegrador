@@ -12,6 +12,7 @@ import DetailMoviesScreen from './screens/DetailMoviesScreen/DetailMoviesScreen'
 import DetailMoviesScreenP from './screens/DetailMoviesScreenP/DetailMoviesScreenP';
 import DetailSeriesP from './components/DetailSeriesP/DetailSeriesP';
 import DetailSeriesTop from './components/DetailSeriesTop/DetailSeriesTop';
+import Busqueda from './components/Busqueda/Busqueda';
 
 
 function NotFound() {
@@ -25,6 +26,7 @@ export default function App() {
       <main>
         <Switch>
           <Route path="/" exact component={Home} />
+          <Route path="/search" exact component={Busqueda} />
           <Route path="/PopularMovies" exact component={Popular} />
           <Route path="/NowPlayingMovies" exact component={Nowplaying} />
           <Route path="/PopularSeries" exact component={PopularSeries} />
