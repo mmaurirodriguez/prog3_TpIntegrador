@@ -41,7 +41,7 @@ class Favoritos extends Component {
 
         let FavoritosSeriesLista = []
         FavoritosSeriesArray.map(ids => {
-            fetch('https://api.themoviedb.org/3/tv/series_id?language=en-US', options)
+            fetch(`https://api.themoviedb.org/3/tv/${ids}?language=en-US`, options)
                 .then(res => res.json())
                 .then(res => {
                     console.log(res)
@@ -58,6 +58,7 @@ class Favoritos extends Component {
         return (
             <div className="container">
                 <h2 className="section-title">Favoritos</h2>
+                <h2 className="section-title">Peliculas favoritas</h2>
                 <section className="row cards" id="movies">
 
                     {this.state.ListadePeliculas.length === 0 ? <h3>No hay peliculas favoritas</h3> :
@@ -70,7 +71,10 @@ class Favoritos extends Component {
                                 overview={pelicula.overview}
                             />
                         })}
-
+                </section>
+                 <h2 className="section-title">Series favoritas</h2>
+                <section className="row cards" id="movies">
+                   
                     {this.state.ListadeSeries.length === 0 ? <h3>No hay series favoritas</h3> :
                         this.state.ListadeSeries.map(serie => {
                             return <CardPopularSeries

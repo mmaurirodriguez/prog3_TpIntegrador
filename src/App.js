@@ -12,8 +12,8 @@ import DetailMoviesScreen from './screens/DetailMoviesScreen/DetailMoviesScreen'
 import DetailMoviesScreenP from './screens/DetailMoviesScreenP/DetailMoviesScreenP';
 import DetailSeriesP from './components/DetailSeriesP/DetailSeriesP';
 import DetailSeriesTop from './components/DetailSeriesTop/DetailSeriesTop';
-import Busqueda from './components/Busqueda/Busqueda';
 import Favoritos from './screens/Favorites/Favorites';
+import NotFound from './screens/NotFound/NotFound';
 
 
 export default function App() {
@@ -32,7 +32,7 @@ export default function App() {
           <Route path="/serieTop/:id" exact component={DetailSeriesTop} />
           <Route path="/seriePopular/:id" exact component={DetailSeriesP} />
           <Route path= "/favoritas" exact component= {Favoritos} />
-          <Route component={NotFound} />
+          <Route path= "" component={NotFound} />
         </Switch>
       </main>
       <Footer />

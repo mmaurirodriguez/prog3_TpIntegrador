@@ -11,7 +11,6 @@ export default class Popular extends Component {
     }
 
   }
-
   componentDidMount() {
     const options = {
       method: 'GET',

@@ -76,9 +76,4 @@
   font-weight: 600;
   cursor: pointer;
   white-space: nowrap;
-  transition: background 0.2s ease-in-out;
-}
-
-.header .search-btn:hover {
-  background-color: #6F4D38 !important; /* Coffee */
 }
