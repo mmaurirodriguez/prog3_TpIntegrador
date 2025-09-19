@@ -9,6 +9,8 @@ class PMoviesFetch extends Component {
       nextUrl: 1,
       loading: true,
       error: null,
+      moviesFiltradas: [],
+      query: ''
     };
   }
 
