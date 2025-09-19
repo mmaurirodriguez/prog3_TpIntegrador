@@ -78,7 +78,6 @@ class AMoviesFetch extends Component {
               : <p>No hay más peliculas para mostrar.</p>
           )
         }
-
       </div>
     );
   }

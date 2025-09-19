@@ -14,29 +14,21 @@ class CardTopRatedSeries extends Component {
   }
   componentDidMount() {
     let FavoritosSeries = localStorage.getItem("FavoritosSeries")
+    let FavRecuperados = JSON.parse(FavoritosSeries)
+    console.log(FavRecuperados);
 
     if (FavoritosSeries !== null) {
-  const FavRecuperados = JSON.parse(FavoritosSeries);
+      console.log(FavRecuperados.includes(this.props.id));
+      if (FavRecuperados.includes(this.props.id)) {
+        console.log("entre");
 
-  if (FavRecuperados.length > 0) {
-    Promise.all(
-      FavRecuperados.map(id =>
-        fetch(`https://api.themoviedb.org/3/tv/${id}`).then(res => res.json())
-      )
-    )
-      .then((array) => {
         this.setState({
-          esFav: true,
-          favsSeries: array
-        });
-      })
-      .catch((err) => console.log("error al traer detalle", err));
-  } else {
-    this.setState({ esFav: false });
+          esFav: true
+        })
+        console.log(this.state.esFav);
+      }
+    }
   }
-} else {
-  this.setState({ esFav: false });
-}}
 
 toggleVerMas = () => {
   this.setState((prev) => ({
