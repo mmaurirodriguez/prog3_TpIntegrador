@@ -17,7 +17,7 @@ class AMoviesFetch extends Component {
   componentDidMount() {
     const { isHome } = this.props;
 
-    fetch("https://api.themoviedb.org/3/movie/popular?api_key=fda0b1f448b62d0af82df1475fcde076&language=es-ES&page=1")
+    fetch("https://api.themoviedb.org/3/movie/now_playing?api_key=fda0b1f448b62d0af82df1475fcde076&language=es-ES&page=1")
       .then((res) => res.json())
       .then((data) => {
         const movies = isHome ? data.results.filter((pelis, idx) => idx < 4) : data.results;
@@ -37,7 +37,7 @@ class AMoviesFetch extends Component {
 
   cargarMas() {
     if (!this.state.nextUrl) return;
-    fetch(`https://api.themoviedb.org/3/movie/popular?api_key=fda0b1f448b62d0af82df1475fcde076&language=es-ES&page=${this.state.nextUrl}`)
+    fetch(`https://api.themoviedb.org/3/movie/now_playing?api_key=fda0b1f448b62d0af82df1475fcde076&language=es-ES&page=${this.state.nextUrl}`)
       .then((res) => res.json())
       .then((data) => {
         const nuevos = this.state.movies.concat(data.results)
