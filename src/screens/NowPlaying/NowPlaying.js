@@ -9,7 +9,7 @@ export default function Nowplaying() {
     <div className="container">
       <h2 className="section-title">Movies now playing</h2>
       <section className="row cards" id="now-playing">
-     <AMoviesFetch/>
+     <AMoviesFetch isHome = {false} />
       </section>
     </div>
   );

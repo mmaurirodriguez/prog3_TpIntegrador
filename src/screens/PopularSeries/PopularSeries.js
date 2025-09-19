@@ -7,7 +7,7 @@ export default function Popular() {
     <div className="container">
       <h2 className="section-title">Popular series this week</h2>
       <section className="row cards" id="movies">
-        <PopularSeriesFetch/>
+        <PopularSeriesFetch isHome = {false}/>
         
       </section>
     </div>
