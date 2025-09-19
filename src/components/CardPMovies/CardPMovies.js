@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
 
-class CarPMovies extends Component {
+class CardPMovies extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -101,4 +101,4 @@ class CarPMovies extends Component {
 
 }
 
-export default CarPMovies;
+export default CardPMovies;

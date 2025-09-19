@@ -15,16 +15,14 @@ class PMoviesFetch extends Component {
   }
 
   componentDidMount() {
-    const { isHome } = this.props;
-
     fetch("https://api.themoviedb.org/3/movie/popular?api_key=fda0b1f448b62d0af82df1475fcde076&language=es-ES&page=1")
       .then((res) => res.json())
       .then((data) => {
-        const movies = isHome ? data.results.filter((pelis, idx) => idx < 4) : data.results;
+        const movies = this.props.isHome ? data.results.filter((pelis, idx) => idx < 4) : data.results;
 
         this.setState({
-          movies,
-          nextUrl: isHome ? null : data.page + 1,
+          movies: movies,
+          nextUrl: this.props.isHome ? null : data.page + 1,
           loading: false,
           moviesFiltradas: data.results
         });

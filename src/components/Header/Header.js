@@ -4,6 +4,34 @@ import LinkHeader from "../LinkHeader/LinkHeader";
 import Busqueda from "../BusquedaFiltrada/BusquedaFiltrada";
 
 export default class Header extends Component{
+  constructor(props) {
+    super(props);
+    this.state = {
+      query: "",
+      tipo: "movie", 
+    };
+  }
+
+  handleChange = (e) => {
+    this.setState({ query: e.target.value });
+  };
+
+  handleTipo = (tipo) => {
+    this.setState({ 
+      tipo });
+  };
+
+  handleSubmit = (e) => {
+    e.preventDefault();
+    const { query, tipo } = this.state;
+
+    if (query.length === 0) {
+  return;
+}
+
+    // 👉 Redirige a la ruta de resultados
+    this.props.history.push(`/search/${tipo}?query=${query}`);
+  };
   render(){
   return (
     <React.Fragment>
@@ -21,7 +49,24 @@ export default class Header extends Component{
 
     </nav>
       <div className="search-bar">
+        <form onSubmit={this.handleSubmit}>
+          <input
+            type="text"
+            placeholder={`Buscar ${
+              this.state.tipo === "movie" ? "películas" : "series"
+            }...`}
+            value={this.state.query}
+            onChange={this.handleChange}
+          />
+          <button type="submit">Buscar</button>
 
+          <button type="button" onClick={() => this.handleTipo("movie")}>
+            Películas
+          </button>
+          <button type="button" onClick={() => this.handleTipo("tv")}>
+            Series
+          </button>
+        </form>
       </div>
 
      </React.Fragment> 
