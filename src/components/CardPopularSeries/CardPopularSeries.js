@@ -12,11 +12,11 @@ class CardPopularSeries extends Component {
     };
   }
   componentDidMount() {
-    let Favoritos = localStorage.getItem("Favoritos")
-    let FavRecuperados = JSON.parse(Favoritos)
+    let FavoritosSeries = localStorage.getItem("FavoritosSeries")
+    let FavRecuperados = JSON.parse(FavoritosSeries)
     console.log(FavRecuperados);
 
-    if (Favoritos !== null) {
+    if (FavoritosSeries !== null) {
       console.log(FavRecuperados.includes(this.props.id));
       if (FavRecuperados.includes(this.props.id)) {
         console.log("entre");
@@ -40,16 +40,16 @@ class CardPopularSeries extends Component {
   };
 
   AgregarAFavorito(id) {
-    let Favoritos = localStorage.getItem("Favoritos")
-    if (Favoritos == null) {
+    let FavoritosSeries = localStorage.getItem("FavoritosSeries")
+    if (FavoritosSeries == null) {
       let ArrayFav = [id]
       let FavToString = JSON.stringify(ArrayFav)
-      localStorage.setItem("Favoritos", FavToString)
+      localStorage.setItem("FavoritosSeries", FavToString)
     } else {
-      let FavRecuperados = JSON.parse(Favoritos)
+      let FavRecuperados = JSON.parse(FavoritosSeries)
       FavRecuperados.push(id)
       let FavToString = JSON.stringify(FavRecuperados)
-      localStorage.setItem("Favoritos", FavToString)
+      localStorage.setItem("FavoritosSeries", FavToString)
     }
     this.setState({
       esFav: true
@@ -57,11 +57,11 @@ class CardPopularSeries extends Component {
   }
 
   BorrarFavorito(id){
-    let Favoritos = localStorage.getItem("Favoritos")
-    let FavRecuperados = JSON.parse(Favoritos)
+    let FavoritosSeries = localStorage.getItem("FavoritosSeries")
+    let FavRecuperados = JSON.parse(FavoritosSeries)
     let a = FavRecuperados.filter(ids => ids !== id)
     let aToString = JSON.stringify(a)
-    localStorage.setItem("Favoritos", aToString)
+    localStorage.setItem("FavoritosSeries", aToString)
 
     this.setState({
       esFav: false
