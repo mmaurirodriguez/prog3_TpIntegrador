@@ -70,6 +70,7 @@ class CardAMovies extends Component {
   
   render() {
     return (
+      
       <article className="single-card-playing">
         <img
           src={this.props.poster}

@@ -16,10 +16,6 @@ import Busqueda from './components/Busqueda/Busqueda';
 import Favoritos from './screens/Favorites/Favorites';
 
 
-function NotFound() {
-  return <h1>404 - Página no encontrada</h1>;
-}
-
 export default function App() {
   return (
     <>
@@ -27,7 +23,6 @@ export default function App() {
       <main>
         <Switch>
           <Route path="/" exact component={Home} />
-          <Route path="/search" exact component={Busqueda} />
           <Route path="/PopularMovies" exact component={Popular} />
           <Route path="/NowPlayingMovies" exact component={Nowplaying} />
           <Route path="/PopularSeries" exact component={PopularSeries} />

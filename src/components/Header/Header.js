@@ -1,9 +1,37 @@
 import React,{Component} from "react";
 import "./Header.css";
 import LinkHeader from "../LinkHeader/LinkHeader";
-import SearchForm from "../SearchForm/SearchForm";
+import Busqueda from "../BusquedaFiltrada/BusquedaFiltrada";
 
 export default class Header extends Component{
+  constructor(props) {
+    super(props);
+    this.state = {
+      query: "",
+      tipo: "movie", 
+    };
+  }
+
+  handleChange = (e) => {
+    this.setState({ query: e.target.value });
+  };
+
+  handleTipo = (tipo) => {
+    this.setState({ 
+      tipo });
+  };
+
+  handleSubmit = (e) => {
+    e.preventDefault();
+    const { query, tipo } = this.state;
+
+    if (query.length === 0) {
+  return;
+}
+
+    // 👉 Redirige a la ruta de resultados
+    this.props.history.push(`/search/${tipo}?query=${query}`);
+  };
   render(){
   return (
     <React.Fragment>
@@ -21,14 +49,26 @@ export default class Header extends Component{
 
     </nav>
       <div className="search-bar">
-          <SearchForm
-            query={this.props.query}
-            tipo={this.props.tipo}
-            handleChange={this.props.handleChange}
-            handleTipo={this.props.handleTipo}
-            handleSubmit={this.props.handleSubmit}
+        <form onSubmit={this.handleSubmit}>
+          <input
+            type="text"
+            placeholder={`Buscar ${
+              this.state.tipo === "movie" ? "películas" : "series"
+            }...`}
+            value={this.state.query}
+            onChange={this.handleChange}
           />
-        </div>
+          <button type="submit">Buscar</button>
+
+          <button type="button" onClick={() => this.handleTipo("movie")}>
+            Películas
+          </button>
+          <button type="button" onClick={() => this.handleTipo("tv")}>
+            Series
+          </button>
+        </form>
+      </div>
+
      </React.Fragment> 
 
   );

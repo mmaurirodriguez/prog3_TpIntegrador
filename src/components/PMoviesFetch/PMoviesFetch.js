@@ -9,21 +9,22 @@ class PMoviesFetch extends Component {
       nextUrl: 1,
       loading: true,
       error: null,
+      moviesFiltradas: [],
+      query: ''
     };
   }
 
   componentDidMount() {
-    const { isHome } = this.props;
-
     fetch("https://api.themoviedb.org/3/movie/popular?api_key=fda0b1f448b62d0af82df1475fcde076&language=es-ES&page=1")
       .then((res) => res.json())
       .then((data) => {
-        const movies = isHome ? data.results.filter((pelis, idx) => idx < 4) : data.results;
+        const movies = this.props.isHome ? data.results.filter((pelis, idx) => idx < 4) : data.results;
 
         this.setState({
-          movies,
-          nextUrl: isHome ? null : data.page + 1,
+          movies: movies,
+          nextUrl: this.props.isHome ? null : data.page + 1,
           loading: false,
+          moviesFiltradas: data.results
         });
       })
       .catch((error) => {
@@ -37,9 +38,11 @@ class PMoviesFetch extends Component {
     fetch(`https://api.themoviedb.org/3/movie/popular?api_key=fda0b1f448b62d0af82df1475fcde076&language=es-ES&page=${this.state.nextUrl}`)
       .then((res) => res.json())
       .then((data) => {
+      const nuevos = this.state.movies.concat(data.results) 
         this.setState({
-          movies: this.state.movies.concat(data.results),
+          movies: nuevos,
           nextUrl: data.page + 1,
+          moviesFiltradas: nuevos
         });
       })
       .catch((error) => console.log(error));
@@ -50,6 +53,26 @@ class PMoviesFetch extends Component {
     this.setState({ movies: arrayNuevo });
   };
 
+  evitarSubmit(event) {
+    event.preventDefault();
+  }
+
+  controlarCambios(event) {
+    const texto = event.target.value;
+    this.setState({ query: texto });
+    this.filtrarPersonajes(texto); // <- se ejecuta acá --> FORMULARIO DE BUSQUEDA
+  }
+
+  // --> FORMULARO DE BUSQUEDAA
+  filtrarPersonajes(textoAFiltrar) {
+    const texto = textoAFiltrar.toLowerCase();
+    const filtrados = this.state.movies.filter((ch) =>
+      ch.title.toLowerCase().includes(texto)
+    );
+    this.setState({ moviesFiltradas: filtrados });
+  }
+
+
   render() {
     const { loading, nextUrl, movies } = this.state;
     const { isHome } = this.props;
@@ -58,8 +81,16 @@ class PMoviesFetch extends Component {
 
     return (
       <div>
+        <form onSubmit={(event) => this.evitarSubmit(event)}>
+          <label>Buscar pelicula:</label>
+          <input
+            type="text"
+            onChange={(event) => this.controlarCambios(event)}
+            value={this.state.query}
+          />
+        </form>
         <section className="row cards" id="movies">
-          {movies.map((mv) => (
+          {this.state.moviesFiltradas.map((mv) => (
             <CardPMovies
               key={mv.id}
               id={mv.id}
