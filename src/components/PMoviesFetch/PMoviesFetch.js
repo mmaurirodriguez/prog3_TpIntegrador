@@ -43,13 +43,6 @@ class PMoviesFetch extends Component {
       .catch((error) => console.log(error));
   }
 
-  borrar(id){
-    const arrayNuevo = this.state.movies.filter((m) => m.id !== id);
-    this.setState({
-      movies: arrayNuevo,
-    });
-  };
-
   render() {
     if (this.state.loading) 
       return <h3>Cargando películas...</h3>;
