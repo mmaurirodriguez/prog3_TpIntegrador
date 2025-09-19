@@ -16,7 +16,7 @@ class PopularSeriesFetch extends Component {
     fetch("https://api.themoviedb.org/3/tv/popular?api_key=2e31cba5082e57ddf6d0739f9c58a8d7")
       .then((res) => res.json())
       .then((data) => {
-        let filtradas = data.results.filter((pelis, idx) => idx < 5);
+        let filtradas = data.results.filter((pelis, idx) => idx < 4);
         this.setState({
           movies: filtradas,
           nextUrl: data.page + 1,

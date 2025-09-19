@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import CardPMovies from "../CardPMovies/CardPMovies";
 
-//PADRE DE CARDPMOVIES!!!!!!
+
 class PMoviesFetch extends Component {
   constructor(props) {
     super(props);
