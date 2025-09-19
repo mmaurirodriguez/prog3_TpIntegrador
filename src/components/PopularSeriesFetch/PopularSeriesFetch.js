@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import CardPopularSeries from "../CardPopularSeries/CardPopularSeries"
+import CardPopularSeries from "../CardPopularSeries/CardPopularSeries";
 
 class PopularSeriesFetch extends Component {
   constructor(props) {
@@ -13,13 +13,15 @@ class PopularSeriesFetch extends Component {
   }
 
   componentDidMount() {
+    const { isHome } = this.props;
+
     fetch("https://api.themoviedb.org/3/tv/popular?api_key=2e31cba5082e57ddf6d0739f9c58a8d7")
       .then((res) => res.json())
       .then((data) => {
-        let filtradas = data.results.filter((pelis, idx) => idx < 4);
+        const movies = isHome ? data.results.filter((pelis, idx) => idx < 4) : data.results;
         this.setState({
-          movies: filtradas,
-          nextUrl: data.page + 1,
+          movies,
+          nextUrl: isHome ? null : data.page + 1,
           loading: false,
         });
       })
@@ -30,6 +32,8 @@ class PopularSeriesFetch extends Component {
   }
 
   cargarMas() {
+    if (!this.state.nextUrl) return;
+
     fetch(`https://api.themoviedb.org/3/tv/popular?api_key=2e31cba5082e57ddf6d0739f9c58a8d7&page=${this.state.nextUrl}`)
       .then((res) => res.json())
       .then((data) => {
@@ -47,12 +51,15 @@ class PopularSeriesFetch extends Component {
   };
 
   render() {
-    if (this.state.loading) return <h3>Cargando series...</h3>;
+    const { isHome } = this.props;
+    const { loading, nextUrl, movies } = this.state;
+
+    if (loading) return <h3>Cargando series...</h3>;
 
     return (
       <div>
         <section className="row cards" id="movies">
-          {this.state.movies.map((mv) => (
+          {movies.map((mv) => (
             <CardPopularSeries
               key={mv.id}
               id={mv.id}
@@ -63,12 +70,13 @@ class PopularSeriesFetch extends Component {
             />
           ))}
         </section>
+        {isHome? null : (
+            nextUrl
+              ? <button onClick={() => this.cargarMas()}>Más series</button>
+              : <p>No hay más series para mostrar.</p>
+          )
+        }
 
-        {this.state.nextUrl ? (
-          <button onClick={() => this.cargarMas()}>Más series</button>
-        ) : (
-          <p>No hay más series para mostrar.</p>
-        )}
       </div>
     );
   }
