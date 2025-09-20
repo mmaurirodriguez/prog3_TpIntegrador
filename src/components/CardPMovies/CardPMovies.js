@@ -12,11 +12,11 @@ class CarPMovies extends Component {
     };
   }
   componentDidMount() {
-    let Favoritos = localStorage.getItem("Favoritos")
-    let FavRecuperados = JSON.parse(Favoritos)
+    let FavoritosMovies = localStorage.getItem("FavoritosMovies")
+    let FavRecuperados = JSON.parse(FavoritosMovies)
     console.log(FavRecuperados);
 
-    if (Favoritos !== null) {
+    if (FavoritosMovies !== null) {
       console.log(FavRecuperados.includes(this.props.id));
       if (FavRecuperados.includes(this.props.id)) {
         console.log("entre");
@@ -40,16 +40,16 @@ class CarPMovies extends Component {
   };
 
   AgregarAFavorito(id) {
-    let Favoritos = localStorage.getItem("Favoritos")
-    if (Favoritos == null) {
+    let FavoritosMovies = localStorage.getItem("FavoritosMovies")
+    if (FavoritosMovies == null) {
       let ArrayFav = [id]
       let FavToString = JSON.stringify(ArrayFav)
-      localStorage.setItem("Favoritos", FavToString)
+      localStorage.setItem("FavoritosMovies", FavToString)
     } else {
-      let FavRecuperados = JSON.parse(Favoritos)
+      let FavRecuperados = JSON.parse(FavoritosMovies)
       FavRecuperados.push(id)
       let FavToString = JSON.stringify(FavRecuperados)
-      localStorage.setItem("Favoritos", FavToString)
+      localStorage.setItem("FavoritosMovies", FavToString)
     }
     this.setState({
       esFav: true
@@ -57,11 +57,11 @@ class CarPMovies extends Component {
   }
 
   BorrarFavorito(id){
-    let Favoritos = localStorage.getItem("Favoritos")
-    let FavRecuperados = JSON.parse(Favoritos)
+    let FavoritosMovies = localStorage.getItem("FavoritosMovies")
+    let FavRecuperados = JSON.parse(FavoritosMovies)
     let a = FavRecuperados.filter(ids => ids !== id)
     let aToString = JSON.stringify(a)
-    localStorage.setItem("Favoritos", aToString)
+    localStorage.setItem("FavoritosMovies", aToString)
 
     this.setState({
       esFav: false

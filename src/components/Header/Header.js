@@ -1,7 +1,7 @@
 import React,{Component} from "react";
 import "./Header.css";
 import LinkHeader from "../LinkHeader/LinkHeader";
-import SearchForm from "../SearchForm/SearchForm";
+import Busqueda from "../BusquedaFiltrada/BusquedaFiltrada";
 
 export default class Header extends Component{
   render(){
@@ -21,14 +21,9 @@ export default class Header extends Component{
 
     </nav>
       <div className="search-bar">
-          <SearchForm
-            query={this.props.query}
-            tipo={this.props.tipo}
-            handleChange={this.props.handleChange}
-            handleTipo={this.props.handleTipo}
-            handleSubmit={this.props.handleSubmit}
-          />
-        </div>
+
+      </div>
+
      </React.Fragment> 
 
   );
