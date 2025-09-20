@@ -14,17 +14,12 @@ class CardAMovies extends Component {
   componentDidMount() {
     let FavoritosMovies = localStorage.getItem("FavoritosMovies")
     let FavRecuperados = JSON.parse(FavoritosMovies)
-    console.log(FavRecuperados);
 
     if (FavoritosMovies !== null) {
-      console.log(FavRecuperados.includes(this.props.id));
       if (FavRecuperados.includes(this.props.id)) {
-        console.log("entre");
-
         this.setState({
           esFav: true
         })
-        console.log(this.state.esFav);
       }
     }
   }
@@ -70,17 +65,14 @@ class CardAMovies extends Component {
   
   render() {
     return (
-      
       <article className="single-card-playing">
-        <img
+        <img className="card-img-top"
           src={this.props.poster}
-          alt={this.props.title}
-          className="card-img-top"
         />
-        <div className="cardBody">
+        <div className="cardBody"> {/**fijarse si es chat**/}
           <h5 className="card-title">{this.props.title}</h5>
 
-          {this.state.verMas && (
+          {this.state.verMas && ( 
             <p className="card-text">{this.props.overview}</p>
           )}
 
@@ -88,8 +80,7 @@ class CardAMovies extends Component {
             {this.state.textoBoton}
           </button>
 
-          <Link to={`/movieNow/${this.props.id}`}
-            className="btn btn-primary">
+          <Link className="btn btn-primary" to={`/movieNow/${this.props.id}`}>
             Ir a detalle
           </Link>
 
@@ -99,7 +90,6 @@ class CardAMovies extends Component {
       </article>
     );
   }
-
 }
 export default CardAMovies;
 

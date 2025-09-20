@@ -21,29 +21,19 @@ componentDidMount(){
       ))
       .catch(error => console.log(error));
       this.generos();
+
       let FavoritosMovies = localStorage.getItem("FavoritosMovies")
     let FavRecuperados = JSON.parse(FavoritosMovies)
-    console.log(FavRecuperados);
 
     if (FavoritosMovies !== null) {
-      console.log(FavRecuperados.includes(this.props.id));
       if (FavRecuperados.includes(this.props.id)) {
-        console.log("entre");
-
         this.setState({
           esFav: true
         })
-        console.log(this.state.esFav);
       }
     }
   }
 
-generos(){
-  fetch("https://api.themoviedb.org/3/genre/movie/list?api_key=fda0b1f448b62d0af82df1475fcde076&language=es-ES")
-    .then(res => res.json())
-    .then(data => this.setState({ generos: data.genres }))
-    .catch(error => console.log(error));
-}
 
   AgregarAFavorito(id) {
     let FavoritosMovies = localStorage.getItem("FavoritosMovies")
@@ -73,7 +63,14 @@ generos(){
       esFav: false
     })
   }
-  
+
+  generos(){
+  fetch("https://api.themoviedb.org/3/genre/movie/list?api_key=fda0b1f448b62d0af82df1475fcde076&language=es-ES")
+    .then(res => res.json())
+    .then(data => this.setState({ generos: data.genres }))
+    .catch(error => console.log(error));
+}
+
 
 render(){
     const id = Number(this.props.match.params.id);

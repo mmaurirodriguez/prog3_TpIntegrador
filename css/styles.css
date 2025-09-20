@@ -12,9 +12,6 @@ nav {
     color: #444;
     text-decoration: none;
 }
-.nav a:hover{
-    font-weight: bold;
-}
 .search-form, .filter-form {
     padding: .5rem 1rem;
     display: grid;

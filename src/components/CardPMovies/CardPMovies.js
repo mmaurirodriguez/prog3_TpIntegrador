@@ -14,10 +14,9 @@ class CardPMovies extends Component {
   componentDidMount() {
     let FavoritosMovies = localStorage.getItem("FavoritosMovies")
     let FavRecuperados = JSON.parse(FavoritosMovies)
-    console.log(FavRecuperados);
 
     if (FavoritosMovies !== null) {
-      console.log(FavRecuperados.includes(this.props.id));
+
       if (FavRecuperados.includes(this.props.id)) {
         console.log("entre");
 
@@ -73,7 +72,6 @@ class CardPMovies extends Component {
       <article className="single-card-playing">
         <img
           src={this.props.poster}
-          alt={this.props.title}
           className="card-img-top"
         />
         <div className="cardBody">
@@ -87,8 +85,7 @@ class CardPMovies extends Component {
             {this.state.textoBoton}
           </button>
 
-          <Link to={`/movieNow/${this.props.id}`}
-            className="btn btn-primary">
+          <Link className="btn btn-primary" to={`/movieNow/${this.props.id}`} >
             Ir a detalle
           </Link>
 

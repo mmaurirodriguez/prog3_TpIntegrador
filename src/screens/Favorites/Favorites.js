@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
-import CarPMovies from "../../components/CardPMovies/CardPMovies";
+import CardPMovies from "../../components/CardPMovies/CardPMovies";
 import CardPopularSeries from "../../components/CardPopularSeries/CardPopularSeries";
 
 class Favoritos extends Component {
@@ -30,7 +30,6 @@ class Favoritos extends Component {
             fetch(`https://api.themoviedb.org/3/movie/${ids}?language=en-US`, options)
                 .then(res => res.json())
                 .then(res => {
-                    console.log(res)
                     FavoritosMoviesLista.push(res)
                     this.setState({
                         ListadePeliculas: FavoritosMoviesLista
@@ -63,7 +62,7 @@ class Favoritos extends Component {
 
                     {this.state.ListadePeliculas.length === 0 ? <h3>No hay peliculas favoritas</h3> :
                         this.state.ListadePeliculas.map(pelicula => {
-                            return <CarPMovies
+                            return <CardPMovies
                                 key={pelicula.id}
                                 id={pelicula.id}
                                 title={pelicula.title}

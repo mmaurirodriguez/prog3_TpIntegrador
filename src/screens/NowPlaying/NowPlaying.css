@@ -21,7 +21,6 @@ nav{
   text-decoration:none;
   margin-right:14px;
   position:relative;
-  transition:color .2s ease;
 }
 .nav a::after{
   content:"";
@@ -29,11 +28,7 @@ nav{
   left:0; bottom:-4px;
   width:0; height:2px;
   background:#D5B893;
-  transition:width .2s ease;
 }
-.nav a:hover{ color:#ffffff; }
-.nav a:hover::after{ width:100%; }
-
 /* ===== BUSCADOR / FILTRO ===== */
 .search-form, .filter-form{
   padding:.5rem 1rem;
@@ -77,15 +72,7 @@ nav{
   box-shadow:0 6px 18px rgba(0,0,0,.35);
   display:flex;
   flex-direction:column;
-  transition:transform .18s ease, box-shadow .18s ease;
-}
-.single-card-people:hover,
-.single-card-movie:hover,
-.single-card-playing:hover,
-.single-card-tv:hover,
-.single-card-on-air:hover{
-  transform:translateY(-4px);
-  box-shadow:0 12px 28px rgba(0,0,0,.42);
+  
 }
 
 /* PÓSTERS UNIFORMES */
@@ -135,35 +122,21 @@ nav{
   margin-right:8px;
   margin-top:6px;
   border:1px solid transparent;
-  cursor:pointer;
-  transition:transform .08s ease, background-color .15s ease, border-color .15s ease, color .15s ease;
-}
-.btn:hover {
-  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
 }
 
-/* Primario: Coffee */
 .btn-primary{
-  background:#6F4D38;               /* Coffee */
+  background:#6F4D38;              
   border-color:#6F4D38;
   color:#fff7ef;
 }
-.btn-primary:hover{ background:#5b3f2e; }
-
-/* Secundario/outline: Caput Mortuum */
 .alert-primary{
   background:transparent;
-  border-color:#632024;             /* Caput Mortuum */
-  color:#ede7df;                    /* Tan para texto */
-}
-.alert-primary:hover{
-  background:#632024;
-  color:#fff7ef;
+  border-color:#632024;             
+  color:#ede7df;                 
 }
 
-/* ===== TÍTULOS ===== */
 h1, h2, h3{
-  color:#D5B893;                    /* Tan */
+  color:#D5B893;                    
   margin:16px 20px 8px;
 }
 .section-title {

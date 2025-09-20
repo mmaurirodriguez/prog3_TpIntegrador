@@ -6,10 +6,8 @@ footer {
   margin-top: 40px;
   border-top: 3px solid #632024; 
   font-size: 0.95rem;
-  letter-spacing: 0.5px;
 }
 
-/* Texto */
 footer p {
   margin: 0;
   font-size: 1.75rem;

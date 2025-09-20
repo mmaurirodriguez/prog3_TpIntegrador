@@ -1,24 +1,20 @@
-/* Header container */
 .header.navbar {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 16px;
-  background: #25344F; /* Space Cadet */
+  background: #25344F; 
   padding: 12px 20px;
   box-shadow: 0 2px 6px rgba(0,0,0,0.25);
 }
 
-/* Logo */
 .header .logo {
   font-size: 1.75rem;
   font-weight: 800;
-  color: #D5B893; /* Tan */
-  white-space: nowrap;
+  color: #D5B893;
   margin-right: 12px;
 }
 
-/* Nav links */
 .header .nav-links {
   display: flex;
   gap: 24px;
@@ -26,40 +22,33 @@
   margin: 0;
   padding: 0;
 }
-
-.header .nav-links a,
-.header .nav-links .nav-link {
+.header .nav-links a {
   text-decoration: none;
-  color: #D5B893; /* Tan */
+  color: #D5B893; 
   font-weight: 500;
   padding: 6px 2px;
   display: inline-block;
-  transition: color 0.2s ease-in-out;
 }
 
-.header .nav-links a:hover,
-.header .nav-links .nav-link:hover {
-  color: #617891; /* Slate Gray */
+.header .nav-links .nav-link {
+  text-decoration: none;
+  color: #D5B893; 
+  font-weight: 500;
+  padding: 6px 2px;
+  display: inline-block;
 }
 
-.header .nav-links .active {
-  color: #D5B893;
-  border-bottom: 2px solid #D5B893;
-}
 
-/* Search */
+
 .header .search-bar {
   margin-left: auto;
   display: flex;
   align-items: center;
   gap: 8px;
   min-width: 280px;
-}
-
-.header .search-bar input[type="text"] {
-  padding: 8px 12px !important;
-  border: 1px solid #617891 !important; /* Slate Gray */
-  border-radius: 6px !important;
+  padding: 8px 12px;
+  border: 1px solid #617891;
+  border-radius: 6px;
   outline: none;
   width: 100%;
   font: inherit;
@@ -68,12 +57,10 @@
 }
 
 .header .search-btn {
-  padding: 8px 14px !important;
-  background-color: #632024 !important; /* Caput Mortuum */
-  border: none !important;
-  border-radius: 6px !important;
-  color: #D5B893 !important; /* Tan */
+  padding: 8px 14px;
+  background-color: #632024;
+  border: none;
+  border-radius: 6px;
+  color: #D5B893;
   font-weight: 600;
-  cursor: pointer;
-  white-space: nowrap;
 }
