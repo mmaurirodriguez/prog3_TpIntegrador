@@ -7,7 +7,9 @@ class DetailMovies extends Component{
     this.state ={
       datos: '',
       favoritos:[],
-      generos:[]
+      generos:[],
+      TextoBotonF: "Agregar a favoritos",
+      esFav: false,
     }
   }
 
@@ -19,6 +21,21 @@ componentDidMount(){
       ))
       .catch(error => console.log(error));
       this.generos();
+      let FavoritosMovies = localStorage.getItem("FavoritosMovies")
+    let FavRecuperados = JSON.parse(FavoritosMovies)
+    console.log(FavRecuperados);
+
+    if (FavoritosMovies !== null) {
+      console.log(FavRecuperados.includes(this.props.id));
+      if (FavRecuperados.includes(this.props.id)) {
+        console.log("entre");
+
+        this.setState({
+          esFav: true
+        })
+        console.log(this.state.esFav);
+      }
+    }
   }
 
 generos(){
@@ -28,11 +45,35 @@ generos(){
     .catch(error => console.log(error));
 }
 
-agregarAFavoritos(pelicula){
-  this.setState({
-    favoritos: this.state.favoritos.concat(pelicula)
-  })
-}
+  AgregarAFavorito(id) {
+    let FavoritosMovies = localStorage.getItem("FavoritosMovies")
+    if (FavoritosMovies == null) {
+      let ArrayFav = [id]
+      let FavToString = JSON.stringify(ArrayFav)
+      localStorage.setItem("FavoritosMovies", FavToString)
+    } else {
+      let FavRecuperados = JSON.parse(FavoritosMovies)
+      FavRecuperados.push(id)
+      let FavToString = JSON.stringify(FavRecuperados)
+      localStorage.setItem("FavoritosMovies", FavToString)
+    }
+    this.setState({
+      esFav: true
+    })
+  }
+
+  BorrarFavorito(id){
+    let FavoritosMovies = localStorage.getItem("FavoritosMovies")
+    let FavRecuperados = JSON.parse(FavoritosMovies)
+    let a = FavRecuperados.filter(ids => ids !== id)
+    let aToString = JSON.stringify(a)
+    localStorage.setItem("FavoritosMovies", aToString)
+
+    this.setState({
+      esFav: false
+    })
+  }
+  
 
 render(){
     const id = Number(this.props.match.params.id);
@@ -53,7 +94,7 @@ render(){
               <p>{aMovie[0].runtime}</p>
               <p>{aMovie[0].overview}</p>
               <p>{aMovie[0].genre_ids.map((id,i) => this.state.generos.filter(g => g.id === id).map(g => g.name)+(i < aMovie[0].genre_ids.length - 1? ", " : ""))}</p>
-              <button onClick={()=>this.agregarAFavoritos(aMovie[0])} className="btn btn-primary"> ⭐ Agregar a favoritos</button>   
+              {this.state.esFav ? <button className = "btn alert-primary" onClick={() => this.BorrarFavorito(this.props.id)} >Eliminar de favoritos </button>: <button className = "btn alert-primary" onClick={() => this.AgregarAFavorito(this.props.id)} > ⭐ Agregar a favoritos</button>}
         </div>
   }
     </React.Fragment>

@@ -9,6 +9,8 @@ class PopularSeriesFetch extends Component {
       nextUrl: 1,
       loading: true,
       error: null,
+      seriesFiltradas: [],
+      query: ''
     };
   }
 
@@ -23,6 +25,7 @@ class PopularSeriesFetch extends Component {
           movies,
           nextUrl: isHome ? null : data.page + 1,
           loading: false,
+          seriesFiltradas: data.results
         });
       })
       .catch((error) => {
@@ -37,9 +40,11 @@ class PopularSeriesFetch extends Component {
     fetch(`https://api.themoviedb.org/3/tv/popular?api_key=2e31cba5082e57ddf6d0739f9c58a8d7&page=${this.state.nextUrl}`)
       .then((res) => res.json())
       .then((data) => {
+      const nuevo = this.state.movies.concat(data.results)
         this.setState({
-          movies: this.state.movies.concat(data.results),
+          movies: nuevo,
           nextUrl: data.page + 1,
+          seriesFiltradas: nuevo
         });
       })
       .catch((error) => console.log(error));
@@ -50,6 +55,26 @@ class PopularSeriesFetch extends Component {
     this.setState({ movies: arrayNuevo });
   };
 
+
+  evitarSubmit(event) {
+    event.preventDefault();
+  }
+
+  controlarCambios(event) {
+    const texto = event.target.value;
+    this.setState({ query: texto });
+    this.filtrarPersonajes(texto); // <- se ejecuta acá --> FORMULARIO DE BUSQUEDA
+  }
+
+  // --> FORMULARO DE BUSQUEDAA
+  filtrarPersonajes(textoAFiltrar) {
+    const texto = textoAFiltrar.toLowerCase();
+    const filtrados = this.state.movies.filter((ch) =>
+      ch.name.toLowerCase().includes(texto)
+    );
+    this.setState({ seriesFiltradas: filtrados });
+  }
+
   render() {
     const { isHome } = this.props;
     const { loading, nextUrl, movies } = this.state;
@@ -58,8 +83,16 @@ class PopularSeriesFetch extends Component {
 
     return (
       <div>
+        <form onSubmit={(event) => this.evitarSubmit(event)}>
+          <label>Buscar serie:</label>
+          <input
+            type="text"
+            onChange={(event) => this.controlarCambios(event)}
+            value={this.state.query}
+          />
+        </form>
         <section className="row cards" id="movies">
-          {movies.map((mv) => (
+          {this.state.seriesFiltradas.map((mv) => (
             <CardPopularSeries
               key={mv.id}
               id={mv.id}

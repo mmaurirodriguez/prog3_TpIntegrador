@@ -12,11 +12,9 @@ import DetailMoviesScreen from './screens/DetailMoviesScreen/DetailMoviesScreen'
 import DetailMoviesScreenP from './screens/DetailMoviesScreenP/DetailMoviesScreenP';
 import DetailSeriesP from './components/DetailSeriesP/DetailSeriesP';
 import DetailSeriesTop from './components/DetailSeriesTop/DetailSeriesTop';
+import Favoritos from './screens/Favorites/Favorites';
+import NotFound from './screens/NotFound/NotFound';
 
-
-function NotFound() {
-  return <h1>404 - Página no encontrada</h1>;
-}
 
 export default function App() {
   return (
@@ -33,7 +31,8 @@ export default function App() {
           <Route path="/moviePopular/:id" exact component={DetailMoviesScreenP} />
           <Route path="/serieTop/:id" exact component={DetailSeriesTop} />
           <Route path="/seriePopular/:id" exact component={DetailSeriesP} />
-          <Route component={NotFound} />
+          <Route path= "/favoritas" exact component= {Favoritos} />
+          <Route path= "" component={NotFound} />
         </Switch>
       </main>
       <Footer />
