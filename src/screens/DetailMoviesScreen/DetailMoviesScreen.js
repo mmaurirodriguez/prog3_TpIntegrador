@@ -8,7 +8,8 @@ class DetailMoviesScreen extends Component{
           TextoBotonF: "Agregar a favoritos",
           esFav: false,
           datosNowPlaying: [],
-          datosPopular: []
+          datosPopular: [],
+          generos: []
 
         }
     }
@@ -36,6 +37,13 @@ class DetailMoviesScreen extends Component{
       ))
       .catch(error => console.log(error));
 
+    
+    fetch("https://api.themoviedb.org/3/genre/movie/list?api_key=fda0b1f448b62d0af82df1475fcde076&language=es-ES")
+      .then(res => res.json())
+      .then(data => this.setState({ generos: data.genres }))
+      .catch(error => console.log(error));
+  
+
     let FavoritosMovies = localStorage.getItem("FavoritosMovies")
     let FavRecuperados = JSON.parse(FavoritosMovies)
 
@@ -56,44 +64,37 @@ class DetailMoviesScreen extends Component{
     
     let id = Number(this.props.match.params.id);
     let aMovie = []
-    {this.state.datosNowPlaying !== ''?
-    aMovie = this.state.datosNowPlaying.filter(peliculas => peliculas.id === id): ''}  
-
     let pMovie = []
-    {this.state.datosPopular !== ''?
-    pMovie = this.state.datosPopular.filter(peliculas => peliculas.id === id): ''}  
+    
+    aMovie = this.state.datosNowPlaying.length > 0?
+    this.state.datosNowPlaying.filter(peliculas => peliculas.id === id)
+    : [];
+
+    
+    pMovie = this.state.datosPopular.length > 0?
+    this.state.datosPopular.filter(peliculas => peliculas.id === id)
+    : [];
+    
+    let movie = aMovie.length === ''? pMovie : aMovie;
 
     return(
       <React.Fragment>
-            {this.state.datosNowPlaying ===''? <h3>Cargando...</h3>:
+            {movie.length === 0? <h3>Cargando...</h3>:
               <div className="detailCard">
                 <DetailMovies
-                  image = {aMovie[0].backdrop_path ? `https://image.tmdb.org/t/p/w500${aMovie[0].backdrop_path}` : ""}
-                  title = {aMovie[0].title}
-                  vote = {aMovie[0].vote_average}
-                  release = {aMovie[0].release_date}
-                  duracion = {aMovie[0].runtime}
-                  descripcion = {aMovie[0].overview}
-                  genero = {aMovie[0].genre_ids}
+                  image = {movie[0].backdrop_path ? `https://image.tmdb.org/t/p/w500${movie[0].backdrop_path}` : ""}
+                  title = {movie[0].title}
+                  vote = {movie[0].vote_average}
+                  release = {movie[0].release_date}
+                  duracion = {movie[0].runtime}
+                  descripcion = {movie[0].overview}
+                  genero = {movie[0].genre_ids}
+                  generos = {this.state.generos}
                   />
               </div>
         }
 
-            {this.state.datos ===''? <h3>Cargando...</h3>:
-              <div className="detailCard">
-                <DetailMovies
-                  image = {pMovie[0].backdrop_path ? `https://image.tmdb.org/t/p/w500${pMovie[0].backdrop_path}` : ""}
-                  title = {pMovie[0].title}
-                  vote = {pMovie[0].vote_average}
-                  release = {pMovie[0].release_date}
-                  duracion = {pMovie[0].runtime}
-                  descripcion = {pMovie[0].overview}
-                  genero = {pMovie[0].genre_ids}
-                  />
-              </div>
-        }
-
-        </React.Fragment>
+      </React.Fragment>
     )
   }
     

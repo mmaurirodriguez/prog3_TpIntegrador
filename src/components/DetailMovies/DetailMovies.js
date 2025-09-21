@@ -5,24 +5,14 @@ class DetailMovies extends Component{
     constructor(props){
     super(props);
     this.state ={
-      datos: '',
       favoritos:[],
-      generos:[],
       TextoBotonF: "Agregar a favoritos",
       esFav: false,
     }
   }
 
 componentDidMount(){
-    fetch("https://api.themoviedb.org/3/movie/now_playing?api_key=fda0b1f448b62d0af82df1475fcde076&language=es-ES&page=1")
-      .then(res=>res.json())
-      .then(data => this.setState(
-        {datos: data.results}
-      ))
-      .catch(error => console.log(error));
-      this.generos();
-
-      let FavoritosMovies = localStorage.getItem("FavoritosMovies")
+    let FavoritosMovies = localStorage.getItem("FavoritosMovies")
     let FavRecuperados = JSON.parse(FavoritosMovies)
 
     if (FavoritosMovies !== null) {
@@ -64,36 +54,19 @@ componentDidMount(){
     })
   }
 
-  generos(){
-  fetch("https://api.themoviedb.org/3/genre/movie/list?api_key=fda0b1f448b62d0af82df1475fcde076&language=es-ES")
-    .then(res => res.json())
-    .then(data => this.setState({ generos: data.genres }))
-    .catch(error => console.log(error));
-}
 
 
 render(){
-    const id = Number(this.props.match.params.id);
-    let aMovie = []
-    if(this.state.datos !== ''){
-    aMovie = this.state.datos.filter(peliculas => peliculas.id === id)
-    }  
-
-    if(!aMovie) return <div>Pelicula no encontrado...</div>
     return(
     <React.Fragment>
-      {this.state.datos ==='' || aMovie.length === 0 ? <h3>Cargando...</h3>:
-        <div className="detailCard">
-          <img src={`https://image.tmdb.org/t/p/w500${aMovie[0].backdrop_path}`} alt={aMovie[0].title} />
-              <h4>{aMovie[0].title}</h4>
-              <p>{aMovie[0].vote_average}</p>
-              <p>{aMovie[0].release_date}</p>
-              <p>{aMovie[0].runtime}</p>
-              <p>{aMovie[0].overview}</p>
-              <p>{aMovie[0].genre_ids.map((id,i) => this.state.generos.filter(g => g.id === id).map(g => g.name)+(i < aMovie[0].genre_ids.length - 1? ", " : ""))}</p>
-              {this.state.esFav ? <button className = "btn alert-primary" onClick={() => this.BorrarFavorito(this.props.id)} >Eliminar de favoritos </button>: <button className = "btn alert-primary" onClick={() => this.AgregarAFavorito(this.props.id)} > ⭐ Agregar a favoritos</button>}
-        </div>
-  }
+      <img src={this.props.image} alt={this.props.title}/>
+      <h4>{this.props.title}</h4>
+      <p>{this.props.vote}</p>
+      <p>{this.props.release}</p>
+      <p>{this.props.duracion}</p>
+      <p>{this.props.descripcion}</p>
+      {this.props.generos.length > 0? <p>{this.props.generos.filter(g => this.props.genero.includes(g.id)).map(g => <p>{g.name}</p>)}</p>: <p>"Cargando..."</p> }
+      {this.state.esFav ? <button className = "btn alert-primary" onClick={() => this.BorrarFavorito(this.props.id)} >Eliminar de favoritos </button>: <button className = "btn alert-primary" onClick={() => this.AgregarAFavorito(this.props.id)} > ⭐ Agregar a favoritos</button>}
     </React.Fragment>
     )
   }
