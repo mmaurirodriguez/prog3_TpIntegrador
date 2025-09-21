@@ -42,21 +42,72 @@ nav{
   margin-bottom:2%;
 }
 
-.single-card-people,
-.single-card-movie,
-.single-card-playing,
-.single-card-tv,
-.single-card-on-air,
-.all-movies .single-card-movie{
-  width:240px;
-  background:#556c83;
-  border:1px solid #3b5368;
-  border-radius:12px;
-  overflow:hidden;
-  box-shadow:0 6px 18px rgba(0,0,0,.35);
-  display:flex;
-  flex-direction:column;
+.single-card-people {
+  width: 240px;
+  background: #556c83;
+  border: 1px solid #3b5368;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 6px 18px rgba(0,0,0,.35);
+  display: flex;
+  flex-direction: column;
 }
+
+.single-card-movie {
+  width: 240px;
+  background: #556c83;
+  border: 1px solid #3b5368;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 6px 18px rgba(0,0,0,.35);
+  display: flex;
+  flex-direction: column;
+}
+
+.single-card-playing {
+  width: 240px;
+  background: #556c83;
+  border: 1px solid #3b5368;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 6px 18px rgba(0,0,0,.35);
+  display: flex;
+  flex-direction: column;
+}
+
+.single-card-tv {
+  width: 240px;
+  background: #556c83;
+  border: 1px solid #3b5368;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 6px 18px rgba(0,0,0,.35);
+  display: flex;
+  flex-direction: column;
+}
+
+.single-card-on-air {
+  width: 240px;
+  background: #556c83;
+  border: 1px solid #3b5368;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 6px 18px rgba(0,0,0,.35);
+  display: flex;
+  flex-direction: column;
+}
+
+.all-movies .single-card-movie {
+  width: 240px;
+  background: #556c83;
+  border: 1px solid #3b5368;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 6px 18px rgba(0,0,0,.35);
+  display: flex;
+  flex-direction: column;
+}
+
 
 .card-img-top{
   width:100%;

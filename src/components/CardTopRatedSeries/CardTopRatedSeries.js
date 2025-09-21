@@ -6,7 +6,7 @@ class CardTopRatedSeries extends Component {
     super(props);
     this.state = {
       verMas: false,
-      textoBoton: "Ver descripción",
+      verDescripcion:false,
       TextoBotonF: "Agregar a favoritos",
       esFav: false,
       favsSeries: []
@@ -30,15 +30,9 @@ class CardTopRatedSeries extends Component {
     }
   }
 
-toggleVerMas = () => {
-  this.setState((prev) => ({
-    verMas: !prev.verMas,
-    textoBoton:
-      prev.textoBoton === "Ver descripción"
-        ? "Ocultar descripción"
-        : "Ver descripción",
-  }));
-};
+ VerDescripcion() {
+    this.setState({ verDescripcion: !this.state.verDescripcion });
+  }
 
 AgregarAFavorito(id) {
   let FavoritosSeries = localStorage.getItem("FavoritosSeries")
@@ -83,9 +77,16 @@ BorrarFavorito(id) {
             <p className="card-text">{this.props.overview}</p>
           )}
 
-          <button onClick={this.toggleVerMas} className="btn alert-primary">
-            {this.state.textoBoton}
+          <button
+            onClick={() => this.VerDescripcion()}
+            className="btn alert-primary"
+          >
+            {this.state.verDescripcion
+              ? "Ocultar descripción"
+              : "Ver descripción"}
           </button>
+
+          {this.state.verDescripcion ? (<p className="card-descripcion">{this.props.overview}</p>) : null}
 
           <Link className="btn btn-primary" to={`/movieNow/${this.props.id}`} >
             Ir a detalle
