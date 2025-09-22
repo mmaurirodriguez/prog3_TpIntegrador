@@ -8,14 +8,15 @@ class DetailSeriesScreen extends Component{
         this.state = {
           TextoBotonF: "Agregar a favoritos",
           esFav: false,
-          datosTopRated: [],
-          datosPopular: [],
-          generos: []
+          data : {}
 
         }
     }
 
     componentDidMount() {
+
+      let id = Number(this.props.match.params.id);
+      
     let options = {
       method: 'GET',
       headers: {
@@ -24,26 +25,16 @@ class DetailSeriesScreen extends Component{
       }
     };
 
-    fetch("https://api.themoviedb.org/3/tv/popular?api_key=2e31cba5082e57ddf6d0739f9c58a8d7",options)
-      .then(res=>res.json())
-      .then(data => this.setState(
-        {datosPopular: data.results}
-      ))
-      .catch(error => console.log(error));
 
-    fetch("https://api.themoviedb.org/3/tv/top_rated?api_key=2e31cba5082e57ddf6d0739f9c58a8d7",options)
-      .then(res=>res.json())
-      .then(data => this.setState(
-        {datosTopRated: data.results}
-      ))
-      .catch(error => console.log(error));
+      fetch(`https://api.themoviedb.org/3/tv/${id}?language=en-US`, options)
+        .then(res => res.json())
+        .then(res => { console.log(res);
+         this.setState({
+          data: res
+        })})
+        .catch(err => console.error(err));
 
     
-    fetch("https://api.themoviedb.org/3/genre/tv/list?api_key=2e31cba5082e57ddf6d0739f9c58a8d7&language=es-ES")
-        .then(res => res.json())
-        .then(data => this.setState({ generos: data.genres }))
-        .catch(error => console.log(error));
-
   
 
     let FavoritosMovies = localStorage.getItem("FavoritosMovies")
@@ -63,34 +54,18 @@ class DetailSeriesScreen extends Component{
   }
 
   render(){
-    
-    let id = Number(this.props.match.params.id);
-    let topSerie = []
-    let pSerie = []
-    
-    topSerie = this.state.datosTopRated.length > 0?
-    this.state.datosTopRated.filter(series => series.id === id)
-    : [];
-
-    
-    pSerie = this.state.datosPopular.length > 0?
-    this.state.datosPopular.filter(series => series.id === id)
-    : [];
-    
-    let serie = topSerie.length === 0? pSerie : topSerie;
-
+    console.log(this.state.data);
     return(
       <React.Fragment>
-            {serie.length === 0? <h3>Cargando...</h3>:
+            {this.state.data.length === 0? <h3>Cargando...</h3>:
               <div className="detailCard">
                 <DetailSeries
-                  image = {serie[0].backdrop_path ? `https://image.tmdb.org/t/p/w500${serie[0].backdrop_path}` : ""}
-                  title = {serie[0].name}
-                  vote = {serie[0].vote_average}
-                  release = {serie[0].first_air_date}
-                  descripcion = {serie[0].overview}
-                  genero = {serie[0].genre_ids}
-                  generos = {this.state.generos}
+                  image = {this.state.data.backdrop_path ? `https://image.tmdb.org/t/p/w500${this.state.data.backdrop_path}` : ""}
+                  title = {this.state.data.name}
+                  vote = {this.state.data.vote_average}
+                  release = {this.state.data.first_air_date}
+                  descripcion = {this.state.data.overview}
+                  genero = {this.state.data.genres}
                   />
               </div>
         }

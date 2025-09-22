@@ -1,36 +1,38 @@
 import React,{Component} from "react";
 import "./Header.css";
 import LinkHeader from "../LinkHeader/LinkHeader";
-import Busqueda from "../BusquedaFiltrada/BusquedaFiltrada";
+import { withRouter } from "react-router-dom/cjs/react-router-dom.min";
 
-export default class Header extends Component{
+
+class Header extends Component{
   constructor(props) {
     super(props);
     this.state = {
       query: "",
-      tipo: "movie", 
+      tipo: "" 
     };
   }
 
-  handleChange = (e) => {
-    this.setState({ query: e.target.value });
-  };
-
-  handleTipo = (tipo) => {
+  handleChangeQuery(e){
     this.setState({ 
-      tipo });
+      query: e.target.value 
+    });
   };
 
-  handleSubmit = (e) => {
-    e.preventDefault();
-    const { query, tipo } = this.state;
 
-    if (query.length === 0) {
-  return;
-}
-
-    this.props.history.push(`/search/${tipo}?query=${query}`);
+  handleChangeTipo(e){
+    this.setState({ 
+      tipo: e
+    });
   };
+
+  handleSubmit(e){
+    e.preventDefault()
+    this.props.history.push(`/results/${this.state.tipo}/${this.state.query}`)
+  }
+
+
+
   render(){
   return (
     <React.Fragment>
@@ -49,22 +51,19 @@ export default class Header extends Component{
     </nav>
       {/* formulario de búsquedaaaaa */}
       <div className="search-bar">
-        <form onSubmit={this.handleSubmit}>
+        <form onSubmit={(e)=>this.handleSubmit(e)}>
           <input
             className="search-input"
             type="text"
-            placeholder={`Buscar ${
-              this.state.tipo === "movie" ? "películas" : "series"
-            }...`}
             value={this.state.query}
-            onChange={this.handleChange}
+            onChange={(e)=>this.handleChangeQuery(e)}
           />
            <button type="submit" className="search-btn">Buscar</button>
 
-          <button type="button" className="tipo-btn" onClick={() => this.handleTipo("movie")}>
+          <button type="button" className="tipo-btn" onClick={()=>this.handleChangeTipo('movie')}>
               Películas
           </button>
-          <button type="button" className="tipo-btn" onClick={() => this.handleTipo("tv")}>
+          <button type="button" className="tipo-btn" onClick={()=>this.handleChangeTipo('tv')}>
             Series
           </button>
         </form>
@@ -74,4 +73,6 @@ export default class Header extends Component{
 
   );
   }}
+
+  export default withRouter(Header);
 

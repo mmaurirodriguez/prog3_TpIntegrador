@@ -60,6 +60,7 @@ render(){
   console.log(this.props.id);
   
     return(
+    this.props.genero == undefined ? <h3>Cargando...</h3> :
     <React.Fragment>
       <img src={this.props.image} alt={this.props.title}/>
       <h4>{this.props.title}</h4>
@@ -67,8 +68,8 @@ render(){
       <p>{this.props.release}</p>
       <p>{this.props.duracion}</p>
       <p>{this.props.descripcion}</p>
-      {this.props.generos.length > 0? <p>{this.props.generos.filter(g => this.props.genero.includes(g.id)).map(g => <p>{g.name}</p>)}</p>: <p>"Cargando..."</p> }
-      {this.state.esFav ? <button className = "btn alert-primary" onClick={() => this.BorrarFavorito(this.props.id)} >Eliminar de favoritos </button>: <button className = "btn alert-primary" onClick={() => this.AgregarAFavorito(this.props.id)} > ⭐ Agregar a favoritos</button>}
+      <p>{this.props.genero.map(g=> g.name)}</p>
+      {this.state.esFav ? <button className = "btn alert-primary" onClick={() => this.BorrarFavorito(this.props.id)} > 🌟 Eliminar de favoritos </button>: <button className = "btn alert-primary" onClick={() => this.AgregarAFavorito(this.props.id)} > ⭐ Agregar a favoritos</button>}
     </React.Fragment>
     )
   }
