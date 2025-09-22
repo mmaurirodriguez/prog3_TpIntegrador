@@ -26,7 +26,7 @@ render(){
       <p>{this.props.release}</p>
       <p>{this.props.descripcion}</p>
       {this.props.generos.length > 0? <p>{this.props.generos.filter(g => this.props.genero.includes(g.id)).map(g => <p>{g.name}</p>)}</p>: <p>"Cargando..."</p> }
-      {/* {this.state.esFav ? <button className = "btn alert-primary" onClick={() => this.BorrarFavorito(this.props.id)} >Eliminar de favoritos </button>: <button className = "btn alert-primary" onClick={() => this.AgregarAFavorito(this.props.id)} > ⭐ Agregar a favoritos</button>} */}
+      {this.state.esFav ? <button className = "btn alert-primary" onClick={() => this.BorrarFavorito(this.props.id)} >Eliminar de favoritos </button>: <button className = "btn alert-primary" onClick={() => this.AgregarAFavorito(this.props.id)} > ⭐ Agregar a favoritos</button>} 
     </React.Fragment>
     )
   }

@@ -1,13 +1,15 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import CardTopRatedSeries from "../../components/CardTopRatedSeries/CardTopRatedSeries";
+import BusquedaFiltrada from "../../components/BusquedaFiltrada/BusquedaFiltrada";
 
 export default class TopRatedSeries extends Component {
   constructor(props) {
     super(props)
     this.state = {
       listaTopRatedSeries: [],
-      siguientePagina: 1
+      siguientePagina: 1,
+      seriesFiltradas: []
     }
 
   }
@@ -26,7 +28,8 @@ export default class TopRatedSeries extends Component {
         console.log(res)
         this.setState({
           listaTopRatedSeries: res.results,
-          siguientePagina: this.state.siguientePagina + 1
+          siguientePagina: this.state.siguientePagina + 1,
+          seriesFiltradas: res.results
         })
       })
       .catch(err => console.error(err));
@@ -46,7 +49,8 @@ export default class TopRatedSeries extends Component {
         console.log(res)
         this.setState({
           listaTopRatedSeries: this.state.listaTopRatedSeries.concat(res.results),
-          siguientePagina: this.state.siguientePagina + 1
+          siguientePagina: this.state.siguientePagina + 1,
+          seriesFiltradas: this.state.seriesFiltradas.concat(res.results)
         })
       })
       .catch(err => console.error(err));
@@ -55,10 +59,18 @@ export default class TopRatedSeries extends Component {
   render() {
     return (
       <div className="container">
-        <h2 className="section-title">TopRated movies this week</h2>
+        <h2 className="section-title">TopRated series this week</h2>
+        <BusquedaFiltrada
+        buscar = {(query) => {let filtradas = this.state.listaTopRatedSeries.filter((peli) => peli.name.toLowerCase().includes(query.toLowerCase()))
+              this.setState({
+                seriesFiltradas: filtradas
+              })
+            }
+          }
+        />
         <section className="row cards" id="movies">
-          {this.state.listaTopRatedSeries.length == 0 ? <h3>Cargando...</h3> :
-            this.state.listaTopRatedSeries.map(peli =>
+          {this.state.seriesFiltradas.length == 0 ? <h3>Cargando...</h3> :
+            this.state.seriesFiltradas.map(peli =>
               <CardTopRatedSeries
                 key={peli.id}
                 id={peli.id}

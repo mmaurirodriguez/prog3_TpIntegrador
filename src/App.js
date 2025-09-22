@@ -5,14 +5,11 @@ import Footer from "./components/Footer/Footer";
 import Home from './screens/Home/Home';
 import Popular from './screens/Popular/Popular';
 import Nowplaying from './screens/NowPlaying/NowPlaying';
-import DetailMovies from './components/DetailMovies/DetailMovies';
 import PopularSeries from './screens/PopularSeries/PopularSeries';
 import TopRatedrSeries from './screens/TopRatedSeries/TopRatedSeries';
 import DetailMoviesScreen from './screens/DetailMoviesScreen/DetailMoviesScreen';
-import DetailMoviesScreenP from './screens/DetailMoviesScreenP/DetailMoviesScreenP';
-import DetailSeriesTop from './components/DetailSeriesTop/DetailSeriesTop';
 import Favoritos from './screens/Favorites/Favorites';
-import DetailSeries from './components/DetailSeries/DetailSeries';
+import DetailSeriesScreen from './screens/DetailSeriesScreen/DetailSeriesScreen';
 import NotFound from './screens/NotFound/NotFound';
 
 
@@ -29,8 +26,8 @@ export default function App() {
           <Route path="/TopRatedSeries" exact component={TopRatedrSeries} />
           <Route path="/movieNow/:id" exact component={DetailMoviesScreen} />
           <Route path="/moviePopular/:id" exact component={DetailMoviesScreen} />
-          <Route path="/serieTop/:id" exact component={DetailSeries} />
-          <Route path="/seriePopular/:id" exact component={DetailSeries} />
+          <Route path="/serieTop/:id" exact component={DetailSeriesScreen} />
+          <Route path="/seriePopular/:id" exact component={DetailSeriesScreen} />
           <Route path= "/favoritas" exact component= {Favoritos} />
           <Route path= "" component={NotFound} />
         </Switch>

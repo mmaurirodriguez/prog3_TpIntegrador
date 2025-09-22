@@ -75,7 +75,7 @@ class DetailMoviesScreen extends Component{
     this.state.datosPopular.filter(peliculas => peliculas.id === id)
     : [];
     
-    let movie = aMovie.length === ''? pMovie : aMovie;
+    let movie = aMovie.length === 0? pMovie : aMovie;
 
     return(
       <React.Fragment>

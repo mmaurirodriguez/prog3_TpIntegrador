@@ -77,7 +77,7 @@ class DetailSeriesScreen extends Component{
     this.state.datosPopular.filter(series => series.id === id)
     : [];
     
-    let serie = topSerie.length === ''? pSerie : topSerie;
+    let serie = topSerie.length === 0? pSerie : topSerie;
 
     return(
       <React.Fragment>

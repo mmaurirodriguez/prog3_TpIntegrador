@@ -1,13 +1,15 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import CardPMovies from "../../components/CardPMovies/CardPMovies";
+import BusquedaFiltrada from "../../components/BusquedaFiltrada/BusquedaFiltrada";
 
 export default class Popular extends Component {
   constructor(props) {
     super(props)
     this.state = {
       listaPopularMovies: [],
-      siguientePagina: 1
+      siguientePagina: 1,
+      moviesFiltradas: [],
     }
 
   }
@@ -26,7 +28,8 @@ export default class Popular extends Component {
         console.log(res)
         this.setState({
           listaPopularMovies: res.results,
-          siguientePagina: this.state.siguientePagina + 1
+          siguientePagina: this.state.siguientePagina + 1,
+          moviesFiltradas: res.results
         })
       })
       .catch(err => console.error(err));
@@ -46,7 +49,8 @@ export default class Popular extends Component {
         console.log(res)
         this.setState({
           listaPopularMovies: this.state.listaPopularMovies.concat(res.results),
-          siguientePagina: this.state.siguientePagina + 1
+          siguientePagina: this.state.siguientePagina + 1,
+          moviesFiltradas: this.state.moviesFiltradas.concat(res.results)
         })
       })
       .catch(err => console.error(err));
@@ -56,9 +60,17 @@ export default class Popular extends Component {
     return (
       <div className="container">
         <h2 className="section-title">Popular movies this week</h2>
+          <BusquedaFiltrada
+            buscar = {(query) => {let filtradas = this.state.listaPopularMovies.filter((peli) => peli.title.toLowerCase().includes(query.toLowerCase()))
+              this.setState({
+                moviesFiltradas: filtradas
+              })
+            }
+          }
+        />
         <section className="row cards" id="movies">
-          {this.state.listaPopularMovies.length == 0 ? <h3>Cargando...</h3> :
-            this.state.listaPopularMovies.map(peli =>
+          {this.state.moviesFiltradas.length == 0 ? <h3>Cargando...</h3> :
+            this.state.moviesFiltradas.map(peli =>
               <CardPMovies
                 key={peli.id}
                 id={peli.id}
