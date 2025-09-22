@@ -61,29 +61,16 @@ class CardPopularSeries extends Component {
     })
   }
   
-   render() {
-      return (
-        <article className="single-card-playing">
-          <img
-            src={this.props.poster}
-            className="card-img-top"
-          />
-          <div className="cardBody">
-            <h5 className="card-title">{this.props.title}</h5>
-  
-            {this.state.verMas && (
-              <p className="card-text">{this.props.overview}</p>
-            )}
-  
-            <button
-            onClick={() => this.VerDescripcion()}
-            className="btn alert-primary"
-          >
-            {this.state.verDescripcion
-              ? "Ocultar descripción"
-              : "Ver descripción"}
-          </button>
+  render() {
+    return (
+      <article className="single-card-playing">
+        <img className="card-img-top"
+          src={this.props.poster}
+        />
+        <div className="cardBody">
+          <h5 className="card-title">{this.props.title}</h5>
 
+<<<<<<< HEAD
           {this.state.verDescripcion ? (<p className="card-descripcion">{this.props.overview}</p>) : null}
   
           <Link className="btn btn-primary" to={`/seriePopular/${this.props.id}`} >
@@ -97,5 +84,25 @@ class CardPopularSeries extends Component {
       );
     }
   
+=======
+          {this.state.verMas ? <p className="card-text">{this.props.overview}</p> : null}
+
+            <button onClick={() => this.VerDescripcion()}
+              className="btn alert-primary"
+            >
+              {this.state.verDescripcion ? "Ocultar descripción" : "Ver descripción"}
+            </button>
+
+            {this.state.verDescripcion ? (<p className="card-descripcion">{this.props.overview}</p>) : null}
+
+            <Link className="btn btn-primary" to={`/movieNow/${this.props.id}`}>
+                Ir a detalle
+            </Link>
+             {this.state.esFav ? <button className = "btn alert-primary" onClick={() => this.BorrarFavorito(this.props.id)} >✅ </button>: <button className = "btn alert-primary" onClick={() => this.AgregarAFavorito(this.props.id)} >♥️</button>}
+        </div>
+      </article>
+    );
+  }
+>>>>>>> e2a51794041b6086e350e20d05fb30bd37af8c78
 }
 export default CardPopularSeries;

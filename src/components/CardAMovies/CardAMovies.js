@@ -23,7 +23,7 @@ class CardAMovies extends Component {
       }
     }
   }
-  verDescripcion() {
+  VerDescripcion() {
     this.setState({ verDescripcion: !this.state.verDescripcion });
   }
 
@@ -62,29 +62,23 @@ class CardAMovies extends Component {
         <img className="card-img-top"
           src={this.props.poster}
         />
-        <div className="cardBody"> {/**fijarse si es chat**/}
+        <div className="cardBody">
           <h5 className="card-title">{this.props.title}</h5>
 
-          {this.state.verMas && ( 
-            <p className="card-text">{this.props.overview}</p>
-          )}
-          <button
-            onClick={() => this.verDescripcion()}
-            className="btn alert-primary"
-          >
-            {this.state.verDescripcion
-              ? "Ocultar descripción"
-              : "Ver descripción"}
-          </button>
+          {this.state.verMas ? <p className="card-text">{this.props.overview}</p> : null}
 
-          {this.state.verDescripcion ? (<p className="card-descripcion">{this.props.overview}</p>) : null}
+            <button onClick={() => this.VerDescripcion()}
+              className="btn alert-primary"
+            >
+              {this.state.verDescripcion? "Ocultar descripción": "Ver descripción"}
+            </button>
 
-          <Link className="btn btn-primary" to={`/movieNow/${this.props.id}`}>
-            Ir a detalle
-          </Link>
+            {this.state.verDescripcion ? (<p className="card-descripcion">{this.props.overview}</p>) : null}
 
-          
-          {this.state.esFav ? <button className = "btn alert-primary" onClick={() => this.BorrarFavorito(this.props.id)} >✅ </button>: <button className = "btn alert-primary" onClick={() => this.AgregarAFavorito(this.props.id)} >♥️</button>}
+            <Link className="btn btn-primary" to={`/movieNow/${this.props.id}`}>
+                Ir a detalle
+            </Link>
+             {this.state.esFav ? <button className = "btn alert-primary" onClick={() => this.BorrarFavorito(this.props.id)} >✅ </button>: <button className = "btn alert-primary" onClick={() => this.AgregarAFavorito(this.props.id)} >♥️</button>}
         </div>
       </article>
     );

@@ -63,28 +63,22 @@ class CardPMovies extends Component {
   render() {
     return (
       <article className="single-card-playing">
-        <img
+        <img className="card-img-top"
           src={this.props.poster}
-          className="card-img-top"
         />
         <div className="cardBody">
           <h5 className="card-title">{this.props.title}</h5>
 
-          {this.state.verMas && (
-            <p className="card-text">{this.props.overview}</p>
-          )}
-  
-          <button
-            onClick={() => this.VerDescripcion()}
-            className="btn alert-primary"
-          >
-            {this.state.verDescripcion
-              ? "Ocultar descripción"
-              : "Ver descripción"}
-          </button>
+          {this.state.verMas ? <p className="card-text">{this.props.overview}</p> : null}
+
+            <button onClick={() => this.VerDescripcion()}
+              className="btn alert-primary"
+            >
+              {this.state.verDescripcion? "Ocultar descripción" : "Ver descripción"}
+            </button>
 
           {this.state.verDescripcion ? (<p className="card-descripcion">{this.props.overview}</p>) : null}
-          <Link className="btn btn-primary" to={`/moviePopular/${this.props.id}`} >
+          <Link className="btn btn-primary" to={`/movieNow/${this.props.id}`} >
             Ir a detalle
           </Link>
 
@@ -94,7 +88,6 @@ class CardPMovies extends Component {
       </article>
     );
   }
-
 }
 
 export default CardPMovies;

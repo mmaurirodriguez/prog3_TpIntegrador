@@ -63,41 +63,39 @@ BorrarFavorito(id) {
   })
 }
 
- render() {
+  render() {
     return (
       <article className="single-card-playing">
-        <img
+        <img className="card-img-top"
           src={this.props.poster}
-          className="card-img-top"
         />
         <div className="cardBody">
           <h5 className="card-title">{this.props.title}</h5>
 
-          {this.state.verMas && (
-            <p className="card-text">{this.props.overview}</p>
-          )}
+          {this.state.verMas ? <p className="card-text">{this.props.overview}</p> : null}
 
-          <button
-            onClick={() => this.VerDescripcion()}
-            className="btn alert-primary"
-          >
-            {this.state.verDescripcion
-              ? "Ocultar descripción"
-              : "Ver descripción"}
-          </button>
+            <button onClick={() => this.VerDescripcion()}
+              className="btn alert-primary"
+            >
+              {this.state.verDescripcion ? "Ocultar descripción" : "Ver descripción"}
+            </button>
 
-          {this.state.verDescripcion ? (<p className="card-descripcion">{this.props.overview}</p>) : null}
+            {this.state.verDescripcion ? (<p className="card-descripcion">{this.props.overview}</p>) : null}
 
+<<<<<<< HEAD
           <Link className="btn btn-primary" to={`/serieTop/${this.props.id}`} >
             Ir a detalle
           </Link>
+=======
+            <Link className="btn btn-primary" to={`/movieNow/${this.props.id}`}>
+                Ir a detalle
+            </Link>
+>>>>>>> e2a51794041b6086e350e20d05fb30bd37af8c78
 
-          
-          {this.state.esFav ? <button className = "btn alert-primary" onClick={() => this.BorrarFavorito(this.props.id)} >✅ </button>: <button className = "btn alert-primary" onClick={() => this.AgregarAFavorito(this.props.id)} >♥️</button>}
+            {this.state.esFav ? <button className = "btn alert-primary" onClick={() => this.BorrarFavorito(this.props.id)} >✅ </button>: <button className = "btn alert-primary" onClick={() => this.AgregarAFavorito(this.props.id)} >♥️</button>}
         </div>
       </article>
     );
   }
-
 }
 export default CardTopRatedSeries;
