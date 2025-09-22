@@ -63,7 +63,7 @@ BorrarFavorito(id) {
   })
 }
 
-  render() {
+render() {
     return (
       <article className="single-card-playing">
         <img className="card-img-top"
@@ -77,16 +77,16 @@ BorrarFavorito(id) {
             <button onClick={() => this.VerDescripcion()}
               className="btn alert-primary"
             >
-              {this.state.verDescripcion ? "Ocultar descripción" : "Ver descripción"}
+              {this.state.verDescripcion? "Ocultar descripción" : "Ver descripción"}
             </button>
-
             {this.state.verDescripcion ? (<p className="card-descripcion">{this.props.overview}</p>) : null}
-
-          <Link className="btn btn-primary" to={`/serieTop/${this.props.id}`} >
+ 
+          <Link className="btn btn-primary" to={`/movieNow/${this.props.id}`} >
             Ir a detalle
           </Link>
 
-            {this.state.esFav ? <button className = "btn alert-primary" onClick={() => this.BorrarFavorito(this.props.id)} >✅ </button>: <button className = "btn alert-primary" onClick={() => this.AgregarAFavorito(this.props.id)} >♥️</button>}
+          
+          {this.state.esFav ? <button className = "btn alert-primary" onClick={() => this.BorrarFavorito(this.props.id)} >✅ </button>: <button className = "btn alert-primary" onClick={() => this.AgregarAFavorito(this.props.id)} >♥️</button>}
         </div>
       </article>
     );
