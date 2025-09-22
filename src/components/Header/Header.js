@@ -29,7 +29,6 @@ export default class Header extends Component{
   return;
 }
 
-    // 👉 Redirige a la ruta de resultados
     this.props.history.push(`/search/${tipo}?query=${query}`);
   };
   render(){
@@ -48,9 +47,11 @@ export default class Header extends Component{
       </ul>
 
     </nav>
+      {/* formulario de búsquedaaaaa */}
       <div className="search-bar">
         <form onSubmit={this.handleSubmit}>
           <input
+            className="search-input"
             type="text"
             placeholder={`Buscar ${
               this.state.tipo === "movie" ? "películas" : "series"
@@ -58,12 +59,12 @@ export default class Header extends Component{
             value={this.state.query}
             onChange={this.handleChange}
           />
-          <button type="submit">Buscar</button>
+           <button type="submit" className="search-btn">Buscar</button>
 
-          <button type="button" onClick={() => this.handleTipo("movie")}>
-            Películas
+          <button type="button" className="tipo-btn" onClick={() => this.handleTipo("movie")}>
+              Películas
           </button>
-          <button type="button" onClick={() => this.handleTipo("tv")}>
+          <button type="button" className="tipo-btn" onClick={() => this.handleTipo("tv")}>
             Series
           </button>
         </form>

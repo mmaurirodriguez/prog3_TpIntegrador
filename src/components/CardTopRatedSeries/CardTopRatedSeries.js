@@ -82,7 +82,7 @@ render() {
             {this.state.verDescripcion ? (<p className="card-descripcion">{this.props.overview}</p>) : null}
  
           <Link className="btn btn-primary" to={`/movieNow/${this.props.id}`} >
-            Ir a detalle
+            Ir al detalle
           </Link>
 
           

@@ -68,7 +68,7 @@ export default class NowPlaying extends Component {
               />
             )}
         </section>
-        <button onClick={() => this.cargarMas()}>Cargar mas</button>
+        <button className="botonCargarmas" onClick={() => this.cargarMas()}>Cargar mas</button>
       </div>
     );
   }

@@ -6,7 +6,7 @@ nav {
     margin-bottom: 20px;
 }
 .nav {
-    margin: 0 !important;
+    margin: 0;
 }
 .nav a{
     color: #444;
@@ -15,11 +15,12 @@ nav {
 .search-form, .filter-form {
     padding: .5rem 1rem;
     display: grid;
-    grid-template-columns: 4fr 1fr;
     column-gap: 5px;
 }
 .filter-form {
-    grid-template-columns: 1fr;
+     padding: .5rem 1rem;
+    display: flex;
+    gap: 8px;  
 }
 .search-form .btn-sm{
     line-height: 1;
@@ -60,30 +61,34 @@ nav {
 }
 #now-playing .card-text{
     height: 100px;
-    overflow: hidden;
+    
 }
 .single-card-tv {
     width: 19%;
 }
 .tv-show .card-text{
-    height: 100px;
-    overflow: hidden;
-}
+    height: 100px;}
+    
 .single-card-on-air{
     width: 15%;
 }
 #on-air-today .card-text{
-    height: 100px;
-    overflow: hidden;
-}
+    height: 100px;}
+    
 
 .all-movies .single-card-movie {
     width: 15%;
 }
 
 
-@media(min-width: 765px){
-    nav {
-        grid-template-columns: 4fr 3fr;
-    }
+@media (min-width: 765px) {
+  nav {
+    display: flex;
+  }
+  nav .left {
+    width: 57%; /* equivalente a 4/7 */
+  }
+  nav .right {
+    width: 43%; /* equivalente a 3/7 */
+  }
 }

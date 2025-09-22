@@ -174,3 +174,17 @@ h1, h2, h3{
   border-left: 6px solid #632024;
   padding-left: 10px;
 }
+
+.botonCargarmas{
+  display:inline-block;
+  padding:8px 12px;
+  border-radius:999px;
+  font-size:.9rem;
+  line-height:1;
+  text-decoration:none;
+  border:1px solid transparent;
+  background:#6F4D38;
+  border-color:#6F4D38;
+  color:#fff7ef;
+  margin: 16px 20px 12px;
+}

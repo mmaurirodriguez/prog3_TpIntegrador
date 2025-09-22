@@ -86,7 +86,7 @@ export default class Home extends Component {
                 />
               )}
           </section>
-          <Link to="/PopularMovies" className="btn btn-primary mt-2">Ver más</Link>
+          <Link to="/PopularMovies" className="botonCargarmas">Ver más</Link>
 
           <h2 className="section-title">Movies Now Playing</h2>
           <section className="row cards" id="movies">
@@ -101,7 +101,7 @@ export default class Home extends Component {
                 />
               )}
           </section>
-          <Link to="/NowPlayingMovies" className="btn btn-primary mt-2">Ver más</Link>
+          <Link to="/NowPlayingMovies" className="botonCargarmas">Ver más</Link>
 
           <h2 className="section-title">Popular series this week</h2>
           <section className="row cards" id="movies">
@@ -116,7 +116,7 @@ export default class Home extends Component {
                 />
               )}
           </section>
-          <Link to="/PopularSeries" className="btn btn-primary mt-2">Ver más</Link>
+          <Link to="/PopularSeries" className="botonCargarmas">Ver más</Link>
 
           <h2 className="section-title">Top rated series</h2>
           <section className="row cards" id="movies">
@@ -131,7 +131,7 @@ export default class Home extends Component {
                 />
               )}
           </section>
-          <Link to="/TopRatedSeries" className="btn btn-primary mt-2">Ver más</Link>
+          <Link to="/TopRatedSeries" className="botonCargarmas">Ver más</Link>
         </div>
       </React.Fragment>
     );

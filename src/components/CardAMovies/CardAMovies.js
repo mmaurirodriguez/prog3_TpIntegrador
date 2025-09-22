@@ -76,7 +76,7 @@ class CardAMovies extends Component {
             {this.state.verDescripcion ? (<p className="card-descripcion">{this.props.overview}</p>) : null}
 
             <Link className="btn btn-primary" to={`/movieNow/${this.props.id}`}>
-                Ir a detalle
+                Ir al detalle
             </Link>
              {this.state.esFav ? <button className = "btn alert-primary" onClick={() => this.BorrarFavorito(this.props.id)} >✅ </button>: <button className = "btn alert-primary" onClick={() => this.AgregarAFavorito(this.props.id)} >♥️</button>}
         </div>
