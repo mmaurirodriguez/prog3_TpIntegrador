@@ -7,17 +7,30 @@ export default class Header extends Component{
   constructor(props) {
     super(props);
     this.state = {
-      query: "", 
+      query: "",
+      tipo: "movie", 
     };
   }
 
-  handleChange(e){
-    this.setState({ 
-      query: e.target.value 
-    });
+  handleChange = (e) => {
+    this.setState({ query: e.target.value });
   };
 
+  handleTipo = (tipo) => {
+    this.setState({ 
+      tipo });
+  };
 
+  handleSubmit = (e) => {
+    e.preventDefault();
+    const { query, tipo } = this.state;
+
+    if (query.length === 0) {
+  return;
+}
+
+    this.props.history.push(`/search/${tipo}?query=${query}`);
+  };
   render(){
   return (
     <React.Fragment>
@@ -34,21 +47,24 @@ export default class Header extends Component{
       </ul>
 
     </nav>
+      {/* formulario de búsquedaaaaa */}
       <div className="search-bar">
-        <form onSubmit={}>
+        <form onSubmit={this.handleSubmit}>
           <input
             className="search-input"
             type="text"
-            placeholder=
+            placeholder={`Buscar ${
+              this.state.tipo === "movie" ? "películas" : "series"
+            }...`}
             value={this.state.query}
-            onChange=
+            onChange={this.handleChange}
           />
            <button type="submit" className="search-btn">Buscar</button>
 
-          <button type="button" className="tipo-btn" onClick={}>
+          <button type="button" className="tipo-btn" onClick={() => this.handleTipo("movie")}>
               Películas
           </button>
-          <button type="button" className="tipo-btn" onClick={}>
+          <button type="button" className="tipo-btn" onClick={() => this.handleTipo("tv")}>
             Series
           </button>
         </form>
