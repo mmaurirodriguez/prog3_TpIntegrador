@@ -82,6 +82,7 @@ class DetailMoviesScreen extends Component{
             {movie.length === 0? <h3>Cargando...</h3>:
               <div className="detailCard">
                 <DetailMovies
+                id={movie[0].id}
                   image = {movie[0].backdrop_path ? `https://image.tmdb.org/t/p/w500${movie[0].backdrop_path}` : ""}
                   title = {movie[0].title}
                   vote = {movie[0].vote_average}

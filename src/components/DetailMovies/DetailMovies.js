@@ -57,6 +57,8 @@ componentDidMount(){
 
 
 render(){
+  console.log(this.props.id);
+  
     return(
     <React.Fragment>
       <img src={this.props.image} alt={this.props.title}/>
