@@ -60,14 +60,16 @@ export default class TopRatedSeries extends Component {
     return (
       <div className="container">
         <h2 className="section-title">TopRated series this week</h2>
-        <BusquedaFiltrada
-        buscar = {(query) => {let filtradas = this.state.listaTopRatedSeries.filter((peli) => peli.name.toLowerCase().includes(query.toLowerCase()))
-              this.setState({
-                seriesFiltradas: filtradas
-              })
-            }
-          }
-        />
+        <div className="section-title">
+                  <BusquedaFiltrada
+                    buscar = {(query) => {let filtradas = this.state.listaPopularMovies.filter((peli) => peli.title.toLowerCase().includes(query.toLowerCase()))
+                      this.setState({
+                        moviesFiltradas: filtradas
+                      })
+                    }
+                  }
+                />
+                </div>
         <section className="row cards" id="movies">
           {this.state.seriesFiltradas.length == 0 ? <h3>Cargando...</h3> :
             this.state.seriesFiltradas.map(peli =>

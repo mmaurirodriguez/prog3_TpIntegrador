@@ -60,6 +60,7 @@ export default class Popular extends Component {
     return (
       <div className="container">
         <h2 className="section-title">Popular movies this week</h2>
+        <div className="section-title">
           <BusquedaFiltrada
             buscar = {(query) => {let filtradas = this.state.listaPopularMovies.filter((peli) => peli.title.toLowerCase().includes(query.toLowerCase()))
               this.setState({
@@ -68,6 +69,8 @@ export default class Popular extends Component {
             }
           }
         />
+        </div>
+          
         <section className="row cards" id="movies">
           {this.state.moviesFiltradas.length == 0 ? <h3>Cargando...</h3> :
             this.state.moviesFiltradas.map(peli =>

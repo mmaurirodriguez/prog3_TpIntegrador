@@ -7,24 +7,21 @@ class BusquedaFiltrada extends Component{
         this.state = {
             query:""
         }
+        
     }
 
     handleChange(e){
         this.setState({
             query: e.target.value
         })
-        this.props.buscar(e.target.value); // <- se ejecuta acá --> FORMULARIO DE BUSQUEDA
+        this.props.buscar(e.target.value); 
     }
-
-
-  // --> FORMULARO DE BUSQUEDA
-    
 
     render(){
         return(
             <React.Fragment>
             <form>
-                <input
+                <input className="search-input"
                 type="text"
                 placeholder="Buscar pelicula..."
                 value={this.state.query}

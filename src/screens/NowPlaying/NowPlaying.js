@@ -62,14 +62,16 @@ export default class NowPlaying extends Component {
     return (
       <div className="container">
         <h2 className="section-title">NowPlaying movies this week</h2>
-        <BusquedaFiltrada
-        buscar = {(query) => {let filtradas = this.state.listaNowPlayingMovies.filter((peli) => peli.title.toLowerCase().includes(query.toLowerCase()))
-              this.setState({
-                moviesFiltradas: filtradas
-              })
-            }
-          }
-        />
+        <div className="section-title">
+                  <BusquedaFiltrada
+                    buscar = {(query) => {let filtradas = this.state.listaPopularMovies.filter((peli) => peli.title.toLowerCase().includes(query.toLowerCase()))
+                      this.setState({
+                        moviesFiltradas: filtradas
+                      })
+                    }
+                  }
+                />
+                </div>
         <section className="row cards" id="movies">
           {this.state.moviesFiltradas.length == 0 ? <h3>Cargando...</h3> :
             this.state.moviesFiltradas.map(peli =>
