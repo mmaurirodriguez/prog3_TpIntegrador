@@ -10,9 +10,9 @@ import PopularSeries from './screens/PopularSeries/PopularSeries';
 import TopRatedrSeries from './screens/TopRatedSeries/TopRatedSeries';
 import DetailMoviesScreen from './screens/DetailMoviesScreen/DetailMoviesScreen';
 import DetailMoviesScreenP from './screens/DetailMoviesScreenP/DetailMoviesScreenP';
-import DetailSeriesP from './components/DetailSeriesP/DetailSeriesP';
 import DetailSeriesTop from './components/DetailSeriesTop/DetailSeriesTop';
 import Favoritos from './screens/Favorites/Favorites';
+import DetailSeries from './components/DetailSeries/DetailSeries';
 import NotFound from './screens/NotFound/NotFound';
 
 
@@ -28,9 +28,9 @@ export default function App() {
           <Route path="/PopularSeries" exact component={PopularSeries} />
           <Route path="/TopRatedSeries" exact component={TopRatedrSeries} />
           <Route path="/movieNow/:id" exact component={DetailMoviesScreen} />
-          <Route path="/moviePopular/:id" exact component={DetailMoviesScreenP} />
-          <Route path="/serieTop/:id" exact component={DetailSeriesTop} />
-          <Route path="/seriePopular/:id" exact component={DetailSeriesP} />
+          <Route path="/moviePopular/:id" exact component={DetailMoviesScreen} />
+          <Route path="/serieTop/:id" exact component={DetailSeries} />
+          <Route path="/seriePopular/:id" exact component={DetailSeries} />
           <Route path= "/favoritas" exact component= {Favoritos} />
           <Route path= "" component={NotFound} />
         </Switch>
