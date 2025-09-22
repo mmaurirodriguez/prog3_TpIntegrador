@@ -21,12 +21,7 @@ componentDidMount(){
       this.generos();
   }
 
-generos(){
-  fetch("https://api.themoviedb.org/3/genre/tv/list?api_key=2e31cba5082e57ddf6d0739f9c58a8d7&language=es-ES")
-    .then(res => res.json())
-    .then(data => this.setState({ generos: data.genres }))
-    .catch(error => console.log(error));
-}
+
 
 agregarAFavoritos(serie){
   this.setState({

@@ -84,7 +84,7 @@ class CardPMovies extends Component {
           </button>
 
           {this.state.verDescripcion ? (<p className="card-descripcion">{this.props.overview}</p>) : null}
-          <Link className="btn btn-primary" to={`/movieNow/${this.props.id}`} >
+          <Link className="btn btn-primary" to={`/moviePopular/${this.props.id}`} >
             Ir a detalle
           </Link>
 
