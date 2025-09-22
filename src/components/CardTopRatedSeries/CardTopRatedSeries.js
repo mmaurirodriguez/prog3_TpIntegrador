@@ -82,15 +82,9 @@ BorrarFavorito(id) {
 
             {this.state.verDescripcion ? (<p className="card-descripcion">{this.props.overview}</p>) : null}
 
-<<<<<<< HEAD
           <Link className="btn btn-primary" to={`/serieTop/${this.props.id}`} >
             Ir a detalle
           </Link>
-=======
-            <Link className="btn btn-primary" to={`/movieNow/${this.props.id}`}>
-                Ir a detalle
-            </Link>
->>>>>>> e2a51794041b6086e350e20d05fb30bd37af8c78
 
             {this.state.esFav ? <button className = "btn alert-primary" onClick={() => this.BorrarFavorito(this.props.id)} >✅ </button>: <button className = "btn alert-primary" onClick={() => this.AgregarAFavorito(this.props.id)} >♥️</button>}
         </div>
