@@ -1,21 +1,36 @@
 import React,{Component} from "react";
 import "./Header.css";
 import LinkHeader from "../LinkHeader/LinkHeader";
-import Busqueda from "../BusquedaFiltrada/BusquedaFiltrada";
+import { withRouter } from "react-router-dom/cjs/react-router-dom.min";
 
-export default class Header extends Component{
+
+class Header extends Component{
   constructor(props) {
     super(props);
     this.state = {
-      query: "", 
+      query: "",
+      tipo: "" 
     };
   }
 
-  handleChange(e){
+  handleChangeQuery(e){
     this.setState({ 
       query: e.target.value 
     });
   };
+
+
+  handleChangeTipo(e){
+    this.setState({ 
+      tipo: e
+    });
+  };
+
+  handleSubmit(e){
+    e.preventDefault()
+    this.props.history.push(`/results/${this.state.tipo}/${this.state.query}`)
+  }
+
 
 
   render(){
@@ -35,20 +50,19 @@ export default class Header extends Component{
 
     </nav>
       <div className="search-bar">
-        <form onSubmit={}>
+        <form onSubmit={(e)=>this.handleSubmit(e)}>
           <input
             className="search-input"
             type="text"
-            placeholder=
             value={this.state.query}
-            onChange=
+            onChange={(e)=>this.handleChangeQuery(e)}
           />
            <button type="submit" className="search-btn">Buscar</button>
 
-          <button type="button" className="tipo-btn" onClick={}>
+          <button type="button" className="tipo-btn" onClick={()=>this.handleChangeTipo('movie')}>
               Películas
           </button>
-          <button type="button" className="tipo-btn" onClick={}>
+          <button type="button" className="tipo-btn" onClick={()=>this.handleChangeTipo('tv')}>
             Series
           </button>
         </form>
@@ -58,4 +72,6 @@ export default class Header extends Component{
 
   );
   }}
+
+  export default withRouter(Header);
 
