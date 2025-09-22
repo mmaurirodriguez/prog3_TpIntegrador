@@ -27,7 +27,7 @@ export default function App() {
           <Route path="/movieNow/:id" exact component={DetailMoviesScreen} />
           <Route path="/moviePopular/:id" exact component={DetailMoviesScreen} />
           <Route path="/serieTop/:id" exact component={DetailSeriesScreen} />
-          <Route path="/seriePopular/:id" exact component={DetailSeriesScreen} />
+          <Route path="/seriePopular/:id/:tipo" exact component={DetailSeriesScreen} />
           <Route path= "/favoritas" exact component= {Favoritos} />
           <Route path= "" component={NotFound} />
         </Switch>
