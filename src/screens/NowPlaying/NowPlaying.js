@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
 import CardAMovies from "../../components/CardAMovies/CardAMovies";
 import BusquedaFiltrada from "../../components/BusquedaFiltrada/BusquedaFiltrada";
 
@@ -61,10 +60,10 @@ export default class NowPlaying extends Component {
   render() {
     return (
       <div className="container">
-        <h2 className="section-title">NowPlaying movies this week</h2>
+        <h2 className="section-title">Now Playing movies this week</h2>
         <div className="section-title">
                   <BusquedaFiltrada
-                    buscar = {(query) => {let filtradas = this.state.listaPopularMovies.filter((peli) => peli.title.toLowerCase().includes(query.toLowerCase()))
+                    buscar = {(query) => {let filtradas = this.state.listaNowPlayingMovies.filter((peli) => peli.title.toLowerCase().includes(query.toLowerCase()))
                       this.setState({
                         moviesFiltradas: filtradas
                       })
@@ -73,7 +72,7 @@ export default class NowPlaying extends Component {
                 />
                 </div>
         <section className="row cards" id="movies">
-          {this.state.moviesFiltradas.length == 0 ? <h3>Cargando...</h3> :
+          {this.state.moviesFiltradas.length === 0 ? <h3>Cargando...</h3> :
             this.state.moviesFiltradas.map(peli =>
               <CardAMovies
                 key={peli.id}

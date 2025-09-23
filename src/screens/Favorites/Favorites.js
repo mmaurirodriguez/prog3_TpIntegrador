@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom/cjs/react-router-dom.min";
 import CardPMovies from "../../components/CardPMovies/CardPMovies";
 import CardPopularSeries from "../../components/CardPopularSeries/CardPopularSeries";
 
@@ -15,7 +14,7 @@ class Favoritos extends Component {
         let FavoritosMovies = localStorage.getItem("FavoritosMovies")
         let FavoritosSeries = localStorage.getItem("FavoritosSeries")
 
-        let FavoritosMoviesArray = JSON.parse(FavoritosMovies)
+        let FavoritosMoviesArray = JSON.parse(FavoritosMovies) 
         let FavoritosSeriesArray = JSON.parse(FavoritosSeries)
 
         const options = {

@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
 import CardPopularSeries from "../../components/CardPopularSeries/CardPopularSeries";
 import BusquedaFiltrada from "../../components/BusquedaFiltrada/BusquedaFiltrada";
 
@@ -61,17 +60,18 @@ export default class PopularSeries extends Component {
       <div className="container">
         <h2 className="section-title">Popular series this week</h2>
         <div className="section-title">
-                  <BusquedaFiltrada
-                    buscar = {(query) => {let filtradas = this.state.listaPopularMovies.filter((peli) => peli.title.toLowerCase().includes(query.toLowerCase()))
-                      this.setState({
-                        moviesFiltradas: filtradas
-                      })
-                    }
-                  }
-                />
-                </div>
+          <BusquedaFiltrada
+            buscar={(query) => {
+              let filtradas = this.state.listaPopularSeries.filter((peli) => peli.original_name.toLowerCase().includes(query.toLowerCase()))
+              this.setState({
+                seriesFiltradas: filtradas
+              })
+            }
+            }
+          />
+        </div>
         <section className="row cards" id="movies">
-          {this.state.seriesFiltradas.length == 0 ? <h3>Cargando...</h3> :
+          {this.state.seriesFiltradas.length === 0 ? <h3>Cargando...</h3> :
             this.state.seriesFiltradas.map(peli =>
               <CardPopularSeries
                 key={peli.id}
