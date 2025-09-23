@@ -39,3 +39,22 @@
   border: none;
   border-radius: 8px;
   background-color: #ffcc00; }
+
+@media (min-width: 768px) {
+  .detailCard img {
+    float: left;
+    width: 320px;
+    max-width: 100%;
+    margin-right: 16px;
+    margin-bottom: 12px;
+  }
+
+  .detailCard p {
+    text-align: left;
+  }
+
+  .detailCard button {
+    display: inline-block;
+    margin-top: 12px;
+  }
+}
