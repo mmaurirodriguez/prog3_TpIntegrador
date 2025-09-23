@@ -60,7 +60,7 @@ export default class ResultadosScreen extends Component {
           <h2 className="section-title">Popular movies this week</h2>
           <section className="row cards" id="movies">
             {this.state.resultadosMovie.length == 0 ? <h3>Cargando...</h3> :
-              this.state.resultadosMovie.map(peli =>
+              this.state.resultadosMovie.filter(p => p.poster_path).map(peli =>  //filtramos para que no aparezcan las peliculas que no tienen los posters y de ahi mapeamos
                 <CardPMovies
                   key={peli.id}
                   id={peli.id}
@@ -75,7 +75,7 @@ export default class ResultadosScreen extends Component {
           <h2 className="section-title">Movies Now Playing</h2>
           <section className="row cards" id="movies">
             {this.state.resultadosMovie.length == 0 ? <h3>Cargando...</h3> :
-              this.state.resultadosMovie.map(peli =>
+              this.state.resultadosMovie.filter(p => p.poster_path).map(peli =>
                 <CardAMovies
                   key={peli.id}
                   id={peli.id}
@@ -90,7 +90,7 @@ export default class ResultadosScreen extends Component {
           <h2 className="section-title">Popular series this week</h2>
           <section className="row cards" id="movies">
             {this.state.resultadosSerie.length == 0 ? <h3>Cargando...</h3> :
-              this.state.resultadosSerie.map(peli =>
+              this.state.resultadosSerie.filter(s => s.poster_path).map(peli =>
                 <CardPopularSeries
                   key={peli.id}
                   id={peli.id}
@@ -105,7 +105,7 @@ export default class ResultadosScreen extends Component {
           <h2 className="section-title">Top rated series</h2>
           <section className="row cards" id="movies">
             {this.state.resultadosSerie.length == 0 ? <h3>Cargando...</h3> :
-              this.state.resultadosSerie.map(peli =>
+              this.state.resultadosSerie.filter(s => s.poster_path).map(peli =>
                 <CardTopRatedSeries
                   key={peli.id}
                   id={peli.id}
