@@ -186,96 +186,80 @@ h3 {
 
 @media (min-width: 480px) {
   .card {
-    flex: 1 1 48%;
-    max-width: 48%;
+    width: 48%;
   }
 
   .single-card {
-    flex: 1 1 48%;
-    max-width: 48%;
+    width: 48%;
   }
 
   .single-card-movie {
-    flex: 1 1 48%;
-    max-width: 48%;
+    width: 48%;
   }
 
   .single-card-playing {
-    flex: 1 1 48%;
-    max-width: 48%;
+    width: 48%;
   }
 
   .single-card-tv {
-    flex: 1 1 48%;
-    max-width: 48%;
+    width: 48%;
   }
 
   .single-card-on-air {
-    flex: 1 1 48%;
-    max-width: 48%;
+    width: 48%;
   }
 }
 
+/* ==== Desktop ==== */
 @media (min-width: 1024px) {
   .card {
-    flex: 1 1 23%;
-    max-width: 23%;
+    width: 23%;
   }
 
   .single-card {
-    flex: 1 1 23%;
-    max-width: 23%;
+    width: 23%;
   }
 
   .single-card-movie {
-    flex: 1 1 23%;
-    max-width: 23%;
+    width: 23%;
   }
 
   .single-card-playing {
-    flex: 1 1 23%;
-    max-width: 23%;
+    width: 23%;
   }
 
   .single-card-tv {
-    flex: 1 1 23%;
-    max-width: 23%;
+    width: 23%;
   }
 
   .single-card-on-air {
-    flex: 1 1 23%;
-    max-width: 23%;
+    width: 23%;
   }
 }
 
+/* ==== Pantallas grandes ==== */
 @media (min-width: 1280px) {
   .card {
-    flex: 1 1 19%;
-    max-width: 19%;
+    width: 19%;
   }
 
   .single-card {
-    flex: 1 1 19%;
-    max-width: 19%;
+    width: 19%;
   }
 
   .single-card-movie {
-    flex: 1 1 19%;
-    max-width: 19%;
+    width: 19%;
   }
 
   .single-card-playing {
-    flex: 1 1 19%;
-    max-width: 19%;
+    width: 19%;
   }
 
   .single-card-tv {
-    flex: 1 1 19%;
-    max-width: 19%;
+    width: 19%;
   }
 
   .single-card-on-air {
-    flex: 1 1 19%;
-    max-width: 19%;
+    width: 19%;
   }
 }

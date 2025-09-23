@@ -24,6 +24,8 @@
   gap: 10px;
   margin: 0;
   list-style: none;
+  justify-content: center;
+
 
 }
 .header .nav-links a {
@@ -85,9 +87,67 @@
   font-weight: 500;
 }
 
-@media (min-width: 768px) {
-  .search-bar form {
-    flex-direction: row;
-    align-items: center;
+@media (max-width: 768px) {
+  .header.navbar{
+    justify-content: center;
+  }
+  .header .logo {
+    font-size: 1.1rem;
+  }
+
+  .header .nav-links a,
+  .header .nav-links .nav-link {
+    font-size: 0.9rem;
+    padding: 6px 8px;          /* botones más compactos */
+  }
+
+  .search-input {
+    height: 34px;
+    justify-content: center;
+  }
+  .search-btn,
+  .tipo-btn {
+    height: 34px;
+    padding: 0 12px;
   }
 }
+
+/* ===== FORM RESPONSIVE EXTRA ===== */
+@media (max-width: 1024px) {
+    .header.navbar{
+    justify-content: center;
+  }
+  .search-bar {
+    width: 100%;
+    margin-top: 10px;
+    justify-content: center;
+  }
+
+  .search-bar form {
+    display: flex;
+    flex-wrap: wrap;       /* que los botones bajen si no entran */
+    gap: 10px;
+  }
+
+  .search-input {
+    flex: 1 1 auto;
+    min-width: 200px;
+  }
+}
+
+@media (max-width: 520px) {
+  .search-bar form {
+    flex-direction: column;
+    align-items: center;   /* centra horizontalmente */
+  }
+
+  .search-input {
+    width: 80%;            /* ocupa solo el 80% del contenedor */
+    max-width: 320px;      /* no más ancho que esto */
+  }
+
+  .search-btn,
+  .tipo-btn {
+    width: 80%;
+    max-width: 320px;
+  }}
